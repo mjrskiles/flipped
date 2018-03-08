@@ -16,6 +16,22 @@
 		4C18D0522046729A009B5545 /* FlippedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D0512046729A009B5545 /* FlippedTests.swift */; };
 		4C18D05D2046729A009B5545 /* FlippedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D05C2046729A009B5545 /* FlippedUITests.swift */; };
 		4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D06A20467422009B5545 /* SettingsViewController.swift */; };
+		4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BD2047D64800DD3A8A /* Tile.swift */; };
+		4C91D9C02047D74000DD3A8A /* TileKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BF2047D74000DD3A8A /* TileKind.swift */; };
+		4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C12047E15D00DD3A8A /* GameBoard.swift */; };
+		4C91D9C4204A82E000DD3A8A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C3204A82E000DD3A8A /* GameView.swift */; };
+		4C91D9C6204A859A00DD3A8A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C5204A859A00DD3A8A /* GameViewController.swift */; };
+		4C91D9C8204BB45C00DD3A8A /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C7204BB45C00DD3A8A /* ColorScheme.swift */; };
+		4C91D9CD204BB6E700DD3A8A /* DefaultColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9CC204BB6E700DD3A8A /* DefaultColorScheme.swift */; };
+		4C91D9CF204BC9FD00DD3A8A /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9CE204BC9FD00DD3A8A /* Level.swift */; };
+		4C91D9D1204BD0C700DD3A8A /* level_1-1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C91D9D0204BD0C700DD3A8A /* level_1-1.plist */; };
+		4C91D9D4204BD71400DD3A8A /* LevelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */; };
+		4C91D9D6204BD89200DD3A8A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9D5204BD89200DD3A8A /* Game.swift */; };
+		4CF2239E204E78E900636706 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239D204E78E900636706 /* Drawable.swift */; };
+		4CF223A0204F233700636706 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239F204F233700636706 /* Observer.swift */; };
+		4CF223A2204F238100636706 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A1204F238100636706 /* Observable.swift */; };
+		4CF223A5204F25E100636706 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A4204F25E100636706 /* Animator.swift */; };
+		4CF223A7204FA46C00636706 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A6204FA46C00636706 /* Turn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +67,22 @@
 		4C18D05C2046729A009B5545 /* FlippedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedUITests.swift; sourceTree = "<group>"; };
 		4C18D05E2046729A009B5545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C18D06A20467422009B5545 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4C91D9BD2047D64800DD3A8A /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		4C91D9BF2047D74000DD3A8A /* TileKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileKind.swift; sourceTree = "<group>"; };
+		4C91D9C12047E15D00DD3A8A /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		4C91D9C3204A82E000DD3A8A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		4C91D9C5204A859A00DD3A8A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		4C91D9C7204BB45C00DD3A8A /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		4C91D9CC204BB6E700DD3A8A /* DefaultColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultColorScheme.swift; sourceTree = "<group>"; };
+		4C91D9CE204BC9FD00DD3A8A /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		4C91D9D0204BD0C700DD3A8A /* level_1-1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "level_1-1.plist"; sourceTree = "<group>"; };
+		4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBuilder.swift; sourceTree = "<group>"; };
+		4C91D9D5204BD89200DD3A8A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		4CF2239D204E78E900636706 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
+		4CF2239F204F233700636706 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		4CF223A1204F238100636706 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		4CF223A4204F25E100636706 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		4CF223A6204FA46C00636706 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,13 +134,15 @@
 			isa = PBXGroup;
 			children = (
 				4C18D03A2046729A009B5545 /* AppDelegate.swift */,
-				4C18D03C2046729A009B5545 /* StartViewController.swift */,
-				4C18D03E2046729A009B5545 /* LevelSelectViewController.swift */,
+				4C91D9C9204BB5EE00DD3A8A /* Controllers */,
 				4C18D0402046729A009B5545 /* Main.storyboard */,
 				4C18D0432046729A009B5545 /* Assets.xcassets */,
 				4C18D0452046729A009B5545 /* LaunchScreen.storyboard */,
 				4C18D0482046729A009B5545 /* Info.plist */,
-				4C18D06A20467422009B5545 /* SettingsViewController.swift */,
+				4C91D9CB204BB69300DD3A8A /* Model */,
+				4C91D9CA204BB66D00DD3A8A /* Views */,
+				4C91D9D2204BD0D200DD3A8A /* Levels */,
+				4CF223A3204F240D00636706 /* Protocols */,
 			);
 			path = Flipped;
 			sourceTree = "<group>";
@@ -129,6 +163,60 @@
 				4C18D05E2046729A009B5545 /* Info.plist */,
 			);
 			path = FlippedUITests;
+			sourceTree = "<group>";
+		};
+		4C91D9C9204BB5EE00DD3A8A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C18D03C2046729A009B5545 /* StartViewController.swift */,
+				4C18D03E2046729A009B5545 /* LevelSelectViewController.swift */,
+				4C18D06A20467422009B5545 /* SettingsViewController.swift */,
+				4C91D9C5204A859A00DD3A8A /* GameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4C91D9CA204BB66D00DD3A8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C91D9C3204A82E000DD3A8A /* GameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C91D9CB204BB69300DD3A8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C91D9BD2047D64800DD3A8A /* Tile.swift */,
+				4C91D9BF2047D74000DD3A8A /* TileKind.swift */,
+				4C91D9C12047E15D00DD3A8A /* GameBoard.swift */,
+				4C91D9C7204BB45C00DD3A8A /* ColorScheme.swift */,
+				4C91D9CC204BB6E700DD3A8A /* DefaultColorScheme.swift */,
+				4C91D9CE204BC9FD00DD3A8A /* Level.swift */,
+				4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */,
+				4C91D9D5204BD89200DD3A8A /* Game.swift */,
+				4CF2239D204E78E900636706 /* Drawable.swift */,
+				4CF223A4204F25E100636706 /* Animator.swift */,
+				4CF223A6204FA46C00636706 /* Turn.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C91D9D2204BD0D200DD3A8A /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				4C91D9D0204BD0C700DD3A8A /* level_1-1.plist */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		4CF223A3204F240D00636706 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2239F204F233700636706 /* Observer.swift */,
+				4CF223A1204F238100636706 /* Observable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +329,7 @@
 				4C18D0472046729A009B5545 /* LaunchScreen.storyboard in Resources */,
 				4C18D0442046729A009B5545 /* Assets.xcassets in Resources */,
 				4C18D0422046729A009B5545 /* Main.storyboard in Resources */,
+				4C91D9D1204BD0C700DD3A8A /* level_1-1.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +354,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C91D9CD204BB6E700DD3A8A /* DefaultColorScheme.swift in Sources */,
+				4CF223A0204F233700636706 /* Observer.swift in Sources */,
 				4C18D03F2046729A009B5545 /* LevelSelectViewController.swift in Sources */,
 				4C18D03B2046729A009B5545 /* AppDelegate.swift in Sources */,
+				4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */,
+				4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */,
+				4CF223A5204F25E100636706 /* Animator.swift in Sources */,
+				4C91D9C6204A859A00DD3A8A /* GameViewController.swift in Sources */,
+				4C91D9D4204BD71400DD3A8A /* LevelBuilder.swift in Sources */,
+				4C91D9CF204BC9FD00DD3A8A /* Level.swift in Sources */,
 				4C18D03D2046729A009B5545 /* StartViewController.swift in Sources */,
+				4CF2239E204E78E900636706 /* Drawable.swift in Sources */,
+				4C91D9D6204BD89200DD3A8A /* Game.swift in Sources */,
+				4CF223A2204F238100636706 /* Observable.swift in Sources */,
+				4C91D9C8204BB45C00DD3A8A /* ColorScheme.swift in Sources */,
+				4CF223A7204FA46C00636706 /* Turn.swift in Sources */,
 				4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */,
+				4C91D9C4204A82E000DD3A8A /* GameView.swift in Sources */,
+				4C91D9C02047D74000DD3A8A /* TileKind.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
