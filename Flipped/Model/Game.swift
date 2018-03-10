@@ -40,21 +40,35 @@ class Game : Observable {
     
     func solveTurn(startedBy tile: Tile, at location: Coordinate) -> Turn {
         var turn = Turn(startedBy: tile, at: location)
+        var modifiedEnteringThisFrame: [(Tile, Coordinate)] = [(tile, location)]
+        var modifiedDuringThisFrame: [(Tile, Coordinate)] = []
         
-        var nextState = StateFrame()
-        for direction in Coordinate.directions {
-            if let neighbor = location.neighbor(to: direction, with: gameBoard.gridSize) {
-                let oldTile = gameBoard.getTile(x: neighbor.x, y: neighbor.y)
-                if tile.shouldFlip(oldTile) {
-                    let newTile = Tile(kind: tile.kind, moveable: false)
-                    gameBoard.setTile(newTile, x: neighbor.x, y: neighbor.y)
-                    let transition = StateFrame.Transition(at: neighbor, from: oldTile, to: newTile)
-                    nextState.transitions.append(transition)
+        //Continue until there are no changes during the last iteration
+        while !modifiedEnteringThisFrame.isEmpty {
+            var nextState = StateFrame()
+            
+            for (currentTile, currentLocation) in modifiedEnteringThisFrame {
+                //Check the tiles touching current tile
+                for direction in Coordinate.directions {
+                    if let neighbor = currentLocation.neighbor(to: direction, with: gameBoard.gridSize) {
+                        let oldTile = gameBoard.getTile(x: neighbor.x, y: neighbor.y)
+                        if currentTile.shouldFlip(oldTile) {
+                            let newTile = Tile(kind: currentTile.kind, moveable: false)
+                            gameBoard.setTile(newTile, x: neighbor.x, y: neighbor.y)
+                            let transition = StateFrame.Transition(at: neighbor, from: oldTile, to: newTile)
+                            nextState.transitions.append(transition)
+                            modifiedDuringThisFrame.append((newTile, neighbor))
+                        }
+                    }
                 }
             }
+            
+            modifiedEnteringThisFrame = modifiedDuringThisFrame
+            modifiedDuringThisFrame = []
+//            print("Entering: \(modifiedEnteringThisFrame)")
+//            print("During: \(modifiedDuringThisFrame)\n")
+            turn.states.append(nextState)
         }
-        
-        turn.states.append(nextState)
         return turn
     }
     
