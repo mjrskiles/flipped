@@ -76,13 +76,6 @@
                                     <action selector="dismissScreen:" destination="buO-78-haS" eventType="touchUpInside" id="4QT-MG-bh2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUw-8S-4Kn">
-                                <rect key="frame" x="106" y="95" width="163" height="30"/>
-                                <state key="normal" title="Draw Something Maybe"/>
-                                <connections>
-                                    <action selector="drawSomethingMaybe:" destination="buO-78-haS" eventType="touchUpInside" id="maf-zf-0K9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -92,8 +85,6 @@
                             <constraint firstItem="rCi-2o-jXN" firstAttribute="bottom" secondItem="NaZ-Xm-2MC" secondAttribute="bottom" constant="40" id="RZo-6d-xEJ"/>
                             <constraint firstItem="rCi-2o-jXN" firstAttribute="trailing" secondItem="jg6-HE-XxC" secondAttribute="trailing" id="Wbc-Ie-AN3"/>
                             <constraint firstAttribute="bottom" secondItem="jg6-HE-XxC" secondAttribute="bottom" id="fti-kD-Hjz"/>
-                            <constraint firstItem="CUw-8S-4Kn" firstAttribute="centerX" secondItem="RPU-WH-eM5" secondAttribute="centerX" id="idP-Om-ReK"/>
-                            <constraint firstItem="CUw-8S-4Kn" firstAttribute="top" secondItem="rCi-2o-jXN" secondAttribute="top" constant="75" id="qik-yX-FNR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rCi-2o-jXN"/>
                     </view>

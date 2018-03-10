@@ -39,7 +39,11 @@ class GameBoard {
         endPoint2 = (level.endPoint2.x, level.endPoint2.y)
     }
     
-    func setTile(tile: Tile, x: Int, y: Int) {
+    func isOpenSpace(_ location: Coordinate) -> Bool {
+        return board[location.x][location.y].kind == .Empty
+    }
+    
+    func setTile(_ tile: Tile, x: Int, y: Int) {
         board[x][y] = tile
     }
     

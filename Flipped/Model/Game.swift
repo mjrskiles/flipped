@@ -23,6 +23,16 @@ class Game : Observable {
         gameBoard = GameBoard(from: level)
     }
     
+    func acceptTile(kind: TileKind, at location: Coordinate) -> Bool {
+        if gameBoard.isOpenSpace(location) {
+            gameBoard.setTile(Tile(kind: kind, moveable: true), x: location.x, y: location.y)
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     // Protocol methods
     
     func notify() {

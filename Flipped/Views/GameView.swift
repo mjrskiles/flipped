@@ -9,17 +9,17 @@
 import UIKit
 
 class GameView: UIView {
-    var observers: [Observer] = []
-    var gameFrame: [Drawable] = []
+    var gameBoard: [Drawable] = []
     let gridSize = 9
     
     //Touch related fields
     var first: CGPoint = CGPoint.zero
     var last : CGPoint = CGPoint.zero
+    var touchListener: ((CGPoint, CGPoint) -> (Void))!
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
-            for item in gameFrame {
+            for item in gameBoard {
                 item.draw(context)
             }
 
@@ -55,10 +55,10 @@ class GameView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             last = touch.location(in: self)
+            touchListener(first, last)
             setNeedsDisplay()
         }
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
+    
 }
