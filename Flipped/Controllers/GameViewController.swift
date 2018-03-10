@@ -17,11 +17,10 @@ class GameViewController: UIViewController, Observer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        game.addObserver(self)
         animator = Animator(forSize: gameView.bounds.size)
         gameView.touchListener = self.handleTouch(start:end:)
-        let width = gameView.bounds.size.width
-        let tileSize: CGFloat = width / 9
-        gameView.gameBoard = animator.drawBoard(from: game.gameBoard, tileSize: tileSize)
+        gameView.gameBoard = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
         // Do any additional setup after loading the view.
     }
@@ -31,14 +30,13 @@ class GameViewController: UIViewController, Observer {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismissScreen(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    // For Observer protocol
     func update() {
-        
+        gameView.gameBoard = animator.drawBoard(from: game.gameBoard)
+        gameView.setNeedsDisplay()
     }
     
+    // This method is registered as the touchListener in gameView
     func handleTouch(start: CGPoint, end: CGPoint) {
         let gridTop = animator.gridOffset
         let gridBottom = (animator.gridOffset + gameView.bounds.size.width)
@@ -49,10 +47,9 @@ class GameViewController: UIViewController, Observer {
             let y = Int((yOffsetIntoGrid / tileSize).rounded(.towardZero))
             let x = Int((xOffsetIntoGrid / tileSize).rounded(.towardZero))
             
-            let accepted = game.acceptTile(kind: .Color_A, at: Coordinate(x, y))
+            let kind: TileKind = start.y < gridBottom ? .Color_A : .Color_B //Temporary to drop pink from above, purple from bottom
+            let accepted = game.acceptTile(kind: kind, at: Coordinate(x, y))
             if accepted {
-                gameView.gameBoard = animator.drawBoard(from: game.gameBoard, tileSize: CGFloat(tileSize))
-                gameView.setNeedsDisplay()
                 print("Tile accepted at \(x), \(y)")
             }
         }

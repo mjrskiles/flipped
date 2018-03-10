@@ -24,16 +24,16 @@ class GameView: UIView {
             }
 
             // Drawing text
-            let text1 = "Touch Started: \(first.x), \(first.y)"
-            let text2 = "Dragged to: \(last.x), \(last.y)"
-            
-            let textAttr : [NSAttributedStringKey : Any] = [
-                .foregroundColor : UIColor.magenta,
-                .font : UIFont.systemFont(ofSize: 16)
-            ]
-            let textY = CGFloat(40)
-            text1.draw(at: CGPoint(x: 20, y: textY), withAttributes: textAttr)
-            text2.draw(at: CGPoint(x: 20, y: textY + 20), withAttributes: textAttr)
+//            let text1 = "Touch Started: \(first.x), \(first.y)"
+//            let text2 = "Dragged to: \(last.x), \(last.y)"
+//
+//            let textAttr : [NSAttributedStringKey : Any] = [
+//                .foregroundColor : UIColor.magenta,
+//                .font : UIFont.systemFont(ofSize: 16)
+//            ]
+//            let textY = CGFloat(40)
+//            text1.draw(at: CGPoint(x: 20, y: textY), withAttributes: textAttr)
+//            text2.draw(at: CGPoint(x: 20, y: textY + 20), withAttributes: textAttr)
         }
     }
     

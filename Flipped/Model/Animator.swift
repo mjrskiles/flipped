@@ -31,7 +31,7 @@ class Animator {
         self.colorScheme = colorScheme
     }
     
-    func drawBoard(from gameBoard: GameBoard, tileSize: CGFloat) -> [Drawable] {
+    func drawBoard(from gameBoard: GameBoard) -> [Drawable] {
         var frames: [Drawable] = []
         var ends: [Drawable] = [] //Store the end points separately so they're drawn last.
         let board = gameBoard //This class should never mutate the gameBoard
@@ -58,7 +58,7 @@ class Animator {
                     let fillColor = self.colorScheme.tileColors[tile.kind]?.cgColor
                     context.setLineWidth(borderWidth)
                     context.setFillColor(fillColor!)
-                    let tileRect = CGRect(x: xLoc, y: yLoc, width: tileSize, height: tileSize)
+                    let tileRect = CGRect(x: xLoc, y: yLoc, width: self.tileSize, height: self.tileSize)
                     context.fill(tileRect)
                     context.stroke(tileRect)
                     
@@ -67,11 +67,11 @@ class Animator {
                         context.setStrokeColor(UIColor.lightGray.cgColor)
                         
                         context.move(to: CGPoint(x: xLoc, y: yLoc))
-                        context.addLine(to: CGPoint(x: (xLoc + tileSize), y: (yLoc + tileSize)))
+                        context.addLine(to: CGPoint(x: (xLoc + self.tileSize), y: (yLoc + self.tileSize)))
                         context.strokePath()
                         
-                        context.move(to: CGPoint(x: xLoc, y: (yLoc + tileSize)))
-                        context.addLine(to: CGPoint(x: (xLoc + tileSize), y: yLoc))
+                        context.move(to: CGPoint(x: xLoc, y: (yLoc + self.tileSize)))
+                        context.addLine(to: CGPoint(x: (xLoc + self.tileSize), y: yLoc))
                         context.strokePath()
                     }
                 }
