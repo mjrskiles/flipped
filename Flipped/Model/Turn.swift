@@ -22,4 +22,16 @@ struct Turn {
         self.tile = tile
         self.location = location
     }
+    
+    public var description: String {
+        var str = "Turn:\n" +
+                  "  tile: \(tile.description)\n" +
+                  "  location: \(location.description)\n" +
+                  "  states:\n"
+        for state in states {
+            str +=
+                  "    \(state.description)"
+        }
+        return str
+    }
 }

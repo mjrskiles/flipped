@@ -24,6 +24,8 @@ struct Coordinate {
         self.y = y
     }
     
+    var description: String { return "(\(x), \(y))"}
+    
     func isValidIndex(x: Int, y: Int, arraySize: Int) -> Bool {
         let xValid = x >= 0 && x < arraySize
         let yValid = y >= 0 && y < arraySize

@@ -69,6 +69,7 @@ class Game : Observable {
 //            print("During: \(modifiedDuringThisFrame)\n")
             turn.states.append(nextState)
         }
+        print(turn.description)
         return turn
     }
     

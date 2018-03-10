@@ -24,4 +24,8 @@ class Tile {
         }
         return false
     }
+    
+    var description: String {
+        return String(describing: kind)
+    }
 }

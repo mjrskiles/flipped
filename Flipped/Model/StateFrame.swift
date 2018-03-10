@@ -19,7 +19,20 @@ struct StateFrame {
             self.old = old
             self.new = new
         }
+        
+        var description: String {
+            return "Transition: at: \(location.description) from: \(old.description) to: \(new.description)"
+        }
     }
     
     var transitions: [Transition] = []
+    
+    var description: String {
+        var str = "StateFrame: \n"
+        for t in transitions {
+            str +=
+                  "  \(t.description)\n"
+        }
+        return str
+    }
 }
