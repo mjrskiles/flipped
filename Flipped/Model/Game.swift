@@ -14,6 +14,7 @@ class Game : Observable {
     var level: Level
     let name: String
     let gameBoard: GameBoard
+    var turnQueue: [Turn] = []
     
     init(name: String) {
         self.name = name
@@ -25,13 +26,36 @@ class Game : Observable {
     
     func acceptTile(kind: TileKind, at location: Coordinate) -> Bool {
         if gameBoard.isOpenSpace(location) {
-            gameBoard.setTile(Tile(kind: kind, moveable: true), x: location.x, y: location.y)
+            let newTile = Tile(kind: kind, moveable: true)
+            gameBoard.setTile(newTile, x: location.x, y: location.y)
+            let turn = solveTurn(startedBy: newTile, at: location)
+            turnQueue.append(turn)
             notify()
             return true
         }
         else {
             return false
         }
+    }
+    
+    func solveTurn(startedBy tile: Tile, at location: Coordinate) -> Turn {
+        var turn = Turn(startedBy: tile, at: location)
+        
+        var nextState = StateFrame()
+        for direction in Coordinate.directions {
+            if let neighbor = location.neighbor(to: direction, with: gameBoard.gridSize) {
+                let oldTile = gameBoard.getTile(x: neighbor.x, y: neighbor.y)
+                if tile.shouldFlip(oldTile) {
+                    let newTile = Tile(kind: tile.kind, moveable: false)
+                    gameBoard.setTile(newTile, x: neighbor.x, y: neighbor.y)
+                    let transition = StateFrame.Transition(at: neighbor, from: oldTile, to: newTile)
+                    nextState.transitions.append(transition)
+                }
+            }
+        }
+        
+        turn.states.append(nextState)
+        return turn
     }
     
     // Protocol methods

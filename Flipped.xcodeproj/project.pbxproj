@@ -29,6 +29,7 @@
 		4C91D9D6204BD89200DD3A8A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9D5204BD89200DD3A8A /* Game.swift */; };
 		4CED25F8205355A9004C67A5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25F7205355A9004C67A5 /* Settings.swift */; };
 		4CED25FA20538539004C67A5 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25F920538539004C67A5 /* Coordinate.swift */; };
+		4CED25FC2053A438004C67A5 /* StateFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25FB2053A438004C67A5 /* StateFrame.swift */; };
 		4CF2239E204E78E900636706 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239D204E78E900636706 /* Drawable.swift */; };
 		4CF223A0204F233700636706 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239F204F233700636706 /* Observer.swift */; };
 		4CF223A2204F238100636706 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A1204F238100636706 /* Observable.swift */; };
@@ -83,6 +84,7 @@
 		4C91D9D5204BD89200DD3A8A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		4CED25F7205355A9004C67A5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4CED25F920538539004C67A5 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		4CED25FB2053A438004C67A5 /* StateFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateFrame.swift; sourceTree = "<group>"; };
 		4CF2239D204E78E900636706 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		4CF2239F204F233700636706 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		4CF223A1204F238100636706 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				4CF223A6204FA46C00636706 /* Turn.swift */,
 				4CED25F7205355A9004C67A5 /* Settings.swift */,
 				4CED25F920538539004C67A5 /* Coordinate.swift */,
+				4CED25FB2053A438004C67A5 /* StateFrame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				4C91D9D4204BD71400DD3A8A /* LevelBuilder.swift in Sources */,
 				4C91D9CF204BC9FD00DD3A8A /* Level.swift in Sources */,
 				4C18D03D2046729A009B5545 /* StartViewController.swift in Sources */,
+				4CED25FC2053A438004C67A5 /* StateFrame.swift in Sources */,
 				4CF2239E204E78E900636706 /* Drawable.swift in Sources */,
 				4C91D9D6204BD89200DD3A8A /* Game.swift in Sources */,
 				4CF223A2204F238100636706 /* Observable.swift in Sources */,

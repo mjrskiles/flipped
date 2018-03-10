@@ -43,6 +43,10 @@ class GameBoard {
         return board[location.x][location.y].kind == .Empty
     }
     
+    func getTile(x: Int, y: Int) -> Tile {
+        return board[x][y]
+    }
+    
     func setTile(_ tile: Tile, x: Int, y: Int) {
         board[x][y] = tile
     }

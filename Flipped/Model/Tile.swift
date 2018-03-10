@@ -16,4 +16,12 @@ class Tile {
         self.kind = kind
         self.moveable = moveable
     }
+    
+    func shouldFlip(_ tile: Tile) -> Bool {
+        if (kind == .Color_A && tile.kind == .Color_B) ||
+           (kind == .Color_B && tile.kind == .Color_A) {
+            return true
+        }
+        return false
+    }
 }
