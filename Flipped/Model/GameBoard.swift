@@ -35,7 +35,7 @@ class GameBoard {
             }
         }
         
-        endPoint1 = (level.endPoint1.x, level.endPoint2.y)
+        endPoint1 = (level.endPoint1.x, level.endPoint1.y)
         endPoint2 = (level.endPoint2.x, level.endPoint2.y)
     }
     
@@ -44,11 +44,6 @@ class GameBoard {
     }
     
     func isEndPoint(_ location: (Int, Int)) -> Bool {
-        if location == (endPoint1) || location == (endPoint2) {
-            return true
-        }
-        else {
-            return false
-        }
+        return location == endPoint1 || location == endPoint2
     }
 }

@@ -9,50 +9,56 @@
 import UIKit
 
 class GameView: UIView {
-    var gameFrame: [Drawable]?
+    var observers: [Observer] = []
+    var gameFrame: [Drawable] = []
+    let gridSize = 9
+    
+    //Touch related fields
+    var first: CGPoint = CGPoint.zero
+    var last : CGPoint = CGPoint.zero
     
     override func draw(_ rect: CGRect) {
-        let width: CGFloat = self.bounds.size.width
-        let height: CGFloat = self.bounds.size.height
-//        let colors: ColorScheme = DefaultColorScheme()
-        let gridSize = 9
-        let tileSize = width / CGFloat(gridSize)
-        
-        
-        
         if let context = UIGraphicsGetCurrentContext() {
-            let grid: Drawable = Drawable() { context in
-                if let context = UIGraphicsGetCurrentContext() {
-                    for i in 0...gridSize {
-                        let offset = (tileSize * CGFloat(i))
-                        //draw horizontal lines
-                        context.move(to: CGPoint(x: 0, y: offset))
-                        context.addLine(to: CGPoint(x: width, y: offset))
-                        context.strokePath()
-                        //draw vertical
-                        context.move(to: CGPoint(x: offset, y: 0))
-                        context.addLine(to: CGPoint(x: offset, y: width))
-                        context.strokePath()
-                    }
-                }
-            }
-            grid.draw(context)
-            if let rs = gameFrame {
-                for d in rs {
-                    d.draw(context)
-                }
+            for item in gameFrame {
+                item.draw(context)
             }
 
             // Drawing text
-            let widthText = "w: \(width)"
-            let heightText = "h: \(height)"
+            let text1 = "Touch Started: \(first.x), \(first.y)"
+            let text2 = "Dragged to: \(last.x), \(last.y)"
             
             let textAttr : [NSAttributedStringKey : Any] = [
                 .foregroundColor : UIColor.magenta,
                 .font : UIFont.systemFont(ofSize: 16)
             ]
-            widthText.draw(at: CGPoint(x: 20, y: 20), withAttributes: textAttr)
-            heightText.draw(at: CGPoint(x: 20, y: 40), withAttributes: textAttr)
+            let textY = CGFloat(40)
+            text1.draw(at: CGPoint(x: 20, y: textY), withAttributes: textAttr)
+            text2.draw(at: CGPoint(x: 20, y: textY + 20), withAttributes: textAttr)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            first = touch.location(in: self)
+            last = first
+            setNeedsDisplay()
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            last = touch.location(in: self)
+            setNeedsDisplay()
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            last = touch.location(in: self)
+            setNeedsDisplay()
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 }

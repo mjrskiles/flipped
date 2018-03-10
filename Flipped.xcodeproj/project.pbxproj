@@ -27,11 +27,13 @@
 		4C91D9D1204BD0C700DD3A8A /* level_1-1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C91D9D0204BD0C700DD3A8A /* level_1-1.plist */; };
 		4C91D9D4204BD71400DD3A8A /* LevelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */; };
 		4C91D9D6204BD89200DD3A8A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9D5204BD89200DD3A8A /* Game.swift */; };
+		4CED25F8205355A9004C67A5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25F7205355A9004C67A5 /* Settings.swift */; };
 		4CF2239E204E78E900636706 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239D204E78E900636706 /* Drawable.swift */; };
 		4CF223A0204F233700636706 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239F204F233700636706 /* Observer.swift */; };
 		4CF223A2204F238100636706 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A1204F238100636706 /* Observable.swift */; };
 		4CF223A5204F25E100636706 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A4204F25E100636706 /* Animator.swift */; };
 		4CF223A7204FA46C00636706 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A6204FA46C00636706 /* Turn.swift */; };
+		4CF223A9205128DF00636706 /* level_1-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CF223A8205128DF00636706 /* level_1-2.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,11 +80,13 @@
 		4C91D9D0204BD0C700DD3A8A /* level_1-1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "level_1-1.plist"; sourceTree = "<group>"; };
 		4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBuilder.swift; sourceTree = "<group>"; };
 		4C91D9D5204BD89200DD3A8A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		4CED25F7205355A9004C67A5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4CF2239D204E78E900636706 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		4CF2239F204F233700636706 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		4CF223A1204F238100636706 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4CF223A4204F25E100636706 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		4CF223A6204FA46C00636706 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
+		4CF223A8205128DF00636706 /* level_1-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "level_1-2.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 				4CF2239D204E78E900636706 /* Drawable.swift */,
 				4CF223A4204F25E100636706 /* Animator.swift */,
 				4CF223A6204FA46C00636706 /* Turn.swift */,
+				4CED25F7205355A9004C67A5 /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 		4C91D9D2204BD0D200DD3A8A /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				4CF223A8205128DF00636706 /* level_1-2.plist */,
 				4C91D9D0204BD0C700DD3A8A /* level_1-1.plist */,
 			);
 			path = Levels;
@@ -327,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C18D0472046729A009B5545 /* LaunchScreen.storyboard in Resources */,
+				4CF223A9205128DF00636706 /* level_1-2.plist in Resources */,
 				4C18D0442046729A009B5545 /* Assets.xcassets in Resources */,
 				4C18D0422046729A009B5545 /* Main.storyboard in Resources */,
 				4C91D9D1204BD0C700DD3A8A /* level_1-1.plist in Resources */,
@@ -368,6 +375,7 @@
 				4CF2239E204E78E900636706 /* Drawable.swift in Sources */,
 				4C91D9D6204BD89200DD3A8A /* Game.swift in Sources */,
 				4CF223A2204F238100636706 /* Observable.swift in Sources */,
+				4CED25F8205355A9004C67A5 /* Settings.swift in Sources */,
 				4C91D9C8204BB45C00DD3A8A /* ColorScheme.swift in Sources */,
 				4CF223A7204FA46C00636706 /* Turn.swift in Sources */,
 				4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */,

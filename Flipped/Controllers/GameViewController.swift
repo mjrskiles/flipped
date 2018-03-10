@@ -9,15 +9,15 @@
 import UIKit
 
 class GameViewController: UIViewController, Observer {
-    private var game: Game = Game(name: "level_1-1")
-    var animator: Animator = Animator()
+    private var game: Game = Game(name: "level_1-2")
+    var animator: Animator!
     
     //Outlets
     @IBOutlet weak var gameView: GameView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        animator = Animator(forSize: gameView.bounds.size)
         // Do any additional setup after loading the view.
     }
 
