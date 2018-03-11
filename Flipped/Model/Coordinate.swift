@@ -6,7 +6,8 @@
 //  Copyright © 2018 Michael Skiles. All rights reserved.
 //
 
-struct Coordinate {
+struct Coordinate : Equatable {
+    
     enum Direction {
         case North
         case East
@@ -56,5 +57,7 @@ struct Coordinate {
         return neighbor
     }
     
-
+    static func ==(lhs: Coordinate, rhs: Coordinate) -> Bool {
+        return (lhs.x == rhs.x) && (lhs.y == rhs.y)
+    }
 }

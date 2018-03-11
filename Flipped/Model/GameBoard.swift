@@ -11,8 +11,8 @@ import Foundation
 class GameBoard {
     var gridSize: Int
     var board: [[Tile]]
-    var endPoint1: (Int, Int)
-    var endPoint2: (Int, Int)
+    var endPoint1: Coordinate
+    var endPoint2: Coordinate
 
     init(from level: Level) {
         gridSize = level.gridSize
@@ -35,8 +35,8 @@ class GameBoard {
             }
         }
         
-        endPoint1 = (level.endPoint1.x, level.endPoint1.y)
-        endPoint2 = (level.endPoint2.x, level.endPoint2.y)
+        endPoint1 = Coordinate(level.endPoint1.x, level.endPoint1.y)
+        endPoint2 = Coordinate(level.endPoint2.x, level.endPoint2.y)
     }
     
     func isOpenSpace(_ location: Coordinate) -> Bool {
@@ -47,11 +47,15 @@ class GameBoard {
         return board[x][y]
     }
     
+    func getTile(at location: Coordinate) -> Tile {
+        return board[location.x][location.y]
+    }
+    
     func setTile(_ tile: Tile, x: Int, y: Int) {
         board[x][y] = tile
     }
     
-    func isEndPoint(_ location: (Int, Int)) -> Bool {
+    func isEndPoint(_ location: Coordinate) -> Bool {
         return location == endPoint1 || location == endPoint2
     }
 }

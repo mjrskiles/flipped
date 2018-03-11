@@ -45,7 +45,7 @@ class Animator {
         for i in 0..<board.board.count {
             for j in 0..<board.board[i].count {
                 //Make calculations outside the closure so unnecessary calculations aren't performed during rendering
-                let isEndPoint = board.isEndPoint((i,j))
+                let isEndPoint = board.isEndPoint(Coordinate(i,j))
                 let strokeColor = isEndPoint ? colorScheme.highlightColor.cgColor : UIColor.lightGray.cgColor
                 let borderWidth = isEndPoint ? CGFloat(strokeWidth * 3) : CGFloat(strokeWidth)
                 let tile: Tile = board.board[i][j]

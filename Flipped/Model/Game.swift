@@ -14,6 +14,7 @@ class Game : Observable {
     var level: Level
     let name: String
     let gameBoard: GameBoard
+    var pathSolver: PathSolver
     var turnQueue: [Turn] = []
     
     init(name: String) {
@@ -22,14 +23,23 @@ class Game : Observable {
         level = LevelBuilder.parseLevel(name: name)
         LevelBuilder.printLevel(level)
         gameBoard = GameBoard(from: level)
+        pathSolver = DFSPathSolver()
     }
     
     func acceptTile(kind: TileKind, at location: Coordinate) -> Bool {
         if gameBoard.isOpenSpace(location) {
             let newTile = Tile(kind: kind, moveable: true)
             gameBoard.setTile(newTile, x: location.x, y: location.y)
+            
+            //Store the turn to animate and maintain game state
             let turn = solveTurn(startedBy: newTile, at: location)
             turnQueue.append(turn)
+            
+            let won = pathSolver.checkForConnectedPath(from: gameBoard.endPoint1, to: gameBoard.endPoint2, on: gameBoard)
+            if won {
+                print("Level complete!!")
+            }
+            
             notify()
             return true
         }
