@@ -16,4 +16,6 @@ struct DefaultColorScheme : ColorScheme {
         TileKind.Blocker : UIColor.darkGray,
         TileKind.Empty   : UIColor.white
     ]
+    
+    var highlightColor: UIColor = UIColor.orange
 }

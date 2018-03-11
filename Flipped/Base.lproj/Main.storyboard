@@ -90,10 +90,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jg6-HE-XxC" firstAttribute="top" secondItem="rCi-2o-jXN" secondAttribute="top" id="BJT-Ah-LDu"/>
-                            <constraint firstItem="jg6-HE-XxC" firstAttribute="leading" secondItem="rCi-2o-jXN" secondAttribute="leading" id="EZX-PQ-Wy8"/>
-                            <constraint firstItem="rCi-2o-jXN" firstAttribute="trailing" secondItem="jg6-HE-XxC" secondAttribute="trailing" id="Wbc-Ie-AN3"/>
-                            <constraint firstAttribute="bottom" secondItem="jg6-HE-XxC" secondAttribute="bottom" id="fti-kD-Hjz"/>
+                            <constraint firstItem="jg6-HE-XxC" firstAttribute="bottom" secondItem="rCi-2o-jXN" secondAttribute="bottom" id="1bV-hF-EgR"/>
+                            <constraint firstItem="jg6-HE-XxC" firstAttribute="trailing" secondItem="rCi-2o-jXN" secondAttribute="trailing" id="39I-ci-tjK"/>
+                            <constraint firstItem="jg6-HE-XxC" firstAttribute="leading" secondItem="rCi-2o-jXN" secondAttribute="leading" id="V2x-eS-YgB"/>
+                            <constraint firstItem="jg6-HE-XxC" firstAttribute="top" secondItem="rCi-2o-jXN" secondAttribute="top" id="tgj-hL-Ftw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rCi-2o-jXN"/>
                     </view>

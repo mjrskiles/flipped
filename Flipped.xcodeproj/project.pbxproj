@@ -30,6 +30,8 @@
 		4CED25F8205355A9004C67A5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25F7205355A9004C67A5 /* Settings.swift */; };
 		4CED25FA20538539004C67A5 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25F920538539004C67A5 /* Coordinate.swift */; };
 		4CED25FC2053A438004C67A5 /* StateFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25FB2053A438004C67A5 /* StateFrame.swift */; };
+		4CED25FF2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25FE2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift */; };
+		4CED26012054FA0B004C67A5 /* PathSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED26002054FA0B004C67A5 /* PathSolver.swift */; };
 		4CF2239E204E78E900636706 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239D204E78E900636706 /* Drawable.swift */; };
 		4CF223A0204F233700636706 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239F204F233700636706 /* Observer.swift */; };
 		4CF223A2204F238100636706 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A1204F238100636706 /* Observable.swift */; };
@@ -85,6 +87,8 @@
 		4CED25F7205355A9004C67A5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4CED25F920538539004C67A5 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		4CED25FB2053A438004C67A5 /* StateFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateFrame.swift; sourceTree = "<group>"; };
+		4CED25FE2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlindFriendlyColorScheme.swift; sourceTree = "<group>"; };
+		4CED26002054FA0B004C67A5 /* PathSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathSolver.swift; sourceTree = "<group>"; };
 		4CF2239D204E78E900636706 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		4CF2239F204F233700636706 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		4CF223A1204F238100636706 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				4C91D9CA204BB66D00DD3A8A /* Views */,
 				4C91D9C9204BB5EE00DD3A8A /* Controllers */,
 				4C91D9D2204BD0D200DD3A8A /* Levels */,
+				4CED25FD2054F2E0004C67A5 /* ColorSchemes */,
 				4CF223A3204F240D00636706 /* Protocols */,
 			);
 			path = Flipped;
@@ -198,8 +203,6 @@
 				4C91D9BD2047D64800DD3A8A /* Tile.swift */,
 				4C91D9BF2047D74000DD3A8A /* TileKind.swift */,
 				4C91D9C12047E15D00DD3A8A /* GameBoard.swift */,
-				4C91D9C7204BB45C00DD3A8A /* ColorScheme.swift */,
-				4C91D9CC204BB6E700DD3A8A /* DefaultColorScheme.swift */,
 				4C91D9CE204BC9FD00DD3A8A /* Level.swift */,
 				4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */,
 				4C91D9D5204BD89200DD3A8A /* Game.swift */,
@@ -222,11 +225,22 @@
 			path = Levels;
 			sourceTree = "<group>";
 		};
+		4CED25FD2054F2E0004C67A5 /* ColorSchemes */ = {
+			isa = PBXGroup;
+			children = (
+				4C91D9C7204BB45C00DD3A8A /* ColorScheme.swift */,
+				4C91D9CC204BB6E700DD3A8A /* DefaultColorScheme.swift */,
+				4CED25FE2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift */,
+			);
+			path = ColorSchemes;
+			sourceTree = "<group>";
+		};
 		4CF223A3204F240D00636706 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				4CF2239F204F233700636706 /* Observer.swift */,
 				4CF223A1204F238100636706 /* Observable.swift */,
+				4CED26002054FA0B004C67A5 /* PathSolver.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -368,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C91D9CD204BB6E700DD3A8A /* DefaultColorScheme.swift in Sources */,
+				4CED25FF2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift in Sources */,
 				4CF223A0204F233700636706 /* Observer.swift in Sources */,
 				4C18D03F2046729A009B5545 /* LevelSelectViewController.swift in Sources */,
 				4C18D03B2046729A009B5545 /* AppDelegate.swift in Sources */,
@@ -385,6 +400,7 @@
 				4CED25FA20538539004C67A5 /* Coordinate.swift in Sources */,
 				4CED25F8205355A9004C67A5 /* Settings.swift in Sources */,
 				4C91D9C8204BB45C00DD3A8A /* ColorScheme.swift in Sources */,
+				4CED26012054FA0B004C67A5 /* PathSolver.swift in Sources */,
 				4CF223A7204FA46C00636706 /* Turn.swift in Sources */,
 				4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */,
 				4C91D9C4204A82E000DD3A8A /* GameView.swift in Sources */,

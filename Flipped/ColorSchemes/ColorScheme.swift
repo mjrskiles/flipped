@@ -11,4 +11,5 @@ import UIKit
 
 protocol ColorScheme {
     var tileColors : [ TileKind: UIColor ] { get }
+    var highlightColor: UIColor { get }
 }

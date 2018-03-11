@@ -23,7 +23,7 @@ class Animator {
         self.viewSize = viewSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
-        colorScheme = DefaultColorScheme()
+        colorScheme = ColorBlindFriendlyColorScheme()
     }
     
     convenience init(forSize viewSize: CGSize, withColors colorScheme: ColorScheme) {
@@ -46,7 +46,7 @@ class Animator {
             for j in 0..<board.board[i].count {
                 //Make calculations outside the closure so unnecessary calculations aren't performed during rendering
                 let isEndPoint = board.isEndPoint((i,j))
-                let strokeColor = isEndPoint ? UIColor.orange.cgColor : UIColor.lightGray.cgColor
+                let strokeColor = isEndPoint ? colorScheme.highlightColor.cgColor : UIColor.lightGray.cgColor
                 let borderWidth = isEndPoint ? CGFloat(strokeWidth * 3) : CGFloat(strokeWidth)
                 let tile: Tile = board.board[i][j]
                 let xLoc = tileSize * CGFloat(i)

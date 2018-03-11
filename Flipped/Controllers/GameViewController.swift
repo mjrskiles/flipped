@@ -47,7 +47,7 @@ class GameViewController: UIViewController, Observer {
             let y = Int((yOffsetIntoGrid / tileSize).rounded(.towardZero))
             let x = Int((xOffsetIntoGrid / tileSize).rounded(.towardZero))
             
-            let kind: TileKind = start.y < gridBottom ? .Color_A : .Color_B //Temporary to drop pink from above, purple from bottom
+            let kind: TileKind = start.y < end.y ? .Color_A : .Color_B //Temporary to drop pink from above, purple from bottom
             let accepted = game.acceptTile(kind: kind, at: Coordinate(x, y))
             if accepted {
                 print("Tile accepted at \(x), \(y)")
