@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PathSolver {
-    func checkForConnectedPath(from p1: Coordinate, to p2: Coordinate, on board: GameBoard) -> Bool
+    func checkForConnectedPath(on board: GameBoard) -> Bool
 }

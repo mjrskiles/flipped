@@ -26,6 +26,8 @@ class Game : Observable {
         pathSolver = DFSPathSolver()
     }
     
+    //Attempts to place a tile on the board at the specified location.
+    //Returns true if the tile was accepted.
     func acceptTile(kind: TileKind, at location: Coordinate) -> Bool {
         if gameBoard.isOpenSpace(location) {
             let newTile = Tile(kind: kind, moveable: true)
@@ -35,7 +37,8 @@ class Game : Observable {
             let turn = solveTurn(startedBy: newTile, at: location)
             turnQueue.append(turn)
             
-            let won = pathSolver.checkForConnectedPath(from: gameBoard.endPoint1, to: gameBoard.endPoint2, on: gameBoard)
+            //Check if this turn completes the level.
+            let won = pathSolver.checkForConnectedPath(on: gameBoard)
             if won {
                 print("Level complete!!")
             }
@@ -48,6 +51,8 @@ class Game : Observable {
         }
     }
     
+    // Iterates the game board after a tile is placed.
+    // Returns a Turn object, which is a bundle of the intermediate board states.
     func solveTurn(startedBy tile: Tile, at location: Coordinate) -> Turn {
         var turn = Turn(startedBy: tile, at: location)
         var modifiedEnteringThisFrame: [(Tile, Coordinate)] = [(tile, location)]
@@ -75,8 +80,6 @@ class Game : Observable {
             
             modifiedEnteringThisFrame = modifiedDuringThisFrame
             modifiedDuringThisFrame = []
-//            print("Entering: \(modifiedEnteringThisFrame)")
-//            print("During: \(modifiedDuringThisFrame)\n")
             turn.states.append(nextState)
         }
         print(turn.description)
