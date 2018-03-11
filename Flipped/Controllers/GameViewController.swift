@@ -20,7 +20,7 @@ class GameViewController: UIViewController, Observer {
         game.addObserver(self)
         animator = Animator(forSize: gameView.bounds.size)
         gameView.touchListener = self.handleTouch(start:end:)
-        gameView.gameBoard = animator.drawBoard(from: game.gameBoard)
+        gameView.display = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
         // Do any additional setup after loading the view.
     }
@@ -34,7 +34,7 @@ class GameViewController: UIViewController, Observer {
     
     // For Observer protocol
     func update() {
-        gameView.gameBoard = animator.drawBoard(from: game.gameBoard)
+        gameView.display = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
     }
     

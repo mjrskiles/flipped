@@ -9,7 +9,7 @@
 import UIKit
 
 class GameView: UIView {
-    var gameBoard: [Drawable] = []
+    var display: [Drawable] = []
     let gridSize = 9
     
     //Touch related fields
@@ -19,7 +19,7 @@ class GameView: UIView {
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
-            for item in gameBoard {
+            for item in display {
                 item.draw(context)
             }
 
