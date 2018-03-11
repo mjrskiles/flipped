@@ -86,6 +86,19 @@ class Game : Observable {
         return turn
     }
     
+    func undoTurn() {
+        if !turnQueue.isEmpty {
+            let lastTurn = turnQueue.removeLast()
+            for state in lastTurn.states {
+                for transition in state.transitions {
+                    gameBoard.setTile(transition.old, location: transition.location)
+                }
+            }
+            gameBoard.setTile(Tile(kind: .Empty, moveable: false), location: lastTurn.location)
+            notify()
+        }
+    }
+    
     // Protocol methods
     
     func notify() {

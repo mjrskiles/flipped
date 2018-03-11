@@ -55,6 +55,10 @@ class GameBoard {
         board[x][y] = tile
     }
     
+    func setTile(_ tile: Tile, location: Coordinate) {
+        board[location.x][location.y] = tile
+    }
+    
     func isEndPoint(_ location: Coordinate) -> Bool {
         return location == endPoint1 || location == endPoint2
     }

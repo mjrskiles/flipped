@@ -30,6 +30,8 @@ class GameViewController: UIViewController, Observer {
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     // For Observer protocol
     func update() {
         gameView.gameBoard = animator.drawBoard(from: game.gameBoard)
@@ -53,6 +55,10 @@ class GameViewController: UIViewController, Observer {
                 print("Tile accepted at \(x), \(y)")
             }
         }
+    }
+    
+    @IBAction func undoPressed(_ sender: UIButton) {
+        game.undoTurn()
     }
     
     /*
