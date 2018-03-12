@@ -33,6 +33,7 @@
 		4CED25FF2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED25FE2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift */; };
 		4CED26012054FA0B004C67A5 /* PathSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED26002054FA0B004C67A5 /* PathSolver.swift */; };
 		4CED26032054FE62004C67A5 /* DFSPathSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED26022054FE62004C67A5 /* DFSPathSolver.swift */; };
+		4CED26072055EE3A004C67A5 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CED26062055EE3A004C67A5 /* settings.plist */; };
 		4CF2239E204E78E900636706 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239D204E78E900636706 /* Drawable.swift */; };
 		4CF223A0204F233700636706 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2239F204F233700636706 /* Observer.swift */; };
 		4CF223A2204F238100636706 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF223A1204F238100636706 /* Observable.swift */; };
@@ -91,6 +92,7 @@
 		4CED25FE2054F308004C67A5 /* ColorBlindFriendlyColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlindFriendlyColorScheme.swift; sourceTree = "<group>"; };
 		4CED26002054FA0B004C67A5 /* PathSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathSolver.swift; sourceTree = "<group>"; };
 		4CED26022054FE62004C67A5 /* DFSPathSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFSPathSolver.swift; sourceTree = "<group>"; };
+		4CED26062055EE3A004C67A5 /* settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		4CF2239D204E78E900636706 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		4CF2239F204F233700636706 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		4CF223A1204F238100636706 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				4C18D0432046729A009B5545 /* Assets.xcassets */,
 				4C18D0452046729A009B5545 /* LaunchScreen.storyboard */,
 				4C18D0482046729A009B5545 /* Info.plist */,
+				4CED26062055EE3A004C67A5 /* settings.plist */,
 				4C91D9CB204BB69300DD3A8A /* Model */,
 				4C91D9CA204BB66D00DD3A8A /* Views */,
 				4C91D9C9204BB5EE00DD3A8A /* Controllers */,
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C18D0472046729A009B5545 /* LaunchScreen.storyboard in Resources */,
+				4CED26072055EE3A004C67A5 /* settings.plist in Resources */,
 				4CF223A9205128DF00636706 /* level_1-2.plist in Resources */,
 				4C18D0442046729A009B5545 /* Assets.xcassets in Resources */,
 				4C18D0422046729A009B5545 /* Main.storyboard in Resources */,

@@ -13,7 +13,6 @@ class Animator {
     var viewSize: CGSize
     var gridOffset: CGFloat = 0
     var tileSize: CGFloat
-    var colorScheme: ColorScheme
     
     var gridSize = 9
     let strokeWidth = 2
@@ -23,18 +22,18 @@ class Animator {
         self.viewSize = viewSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
-        colorScheme = ColorBlindFriendlyColorScheme()
     }
     
-    convenience init(forSize viewSize: CGSize, withColors colorScheme: ColorScheme) {
-        self.init(forSize: viewSize)
-        self.colorScheme = colorScheme
-    }
+//    convenience init(forSize viewSize: CGSize, withColors colorScheme: ColorScheme) {
+//        self.init(forSize: viewSize)
+//        self.colorScheme = colorScheme
+//    }
     
     func drawBoard(from gameBoard: GameBoard) -> [Drawable] {
         var frames: [Drawable] = []
         var ends: [Drawable] = [] //Store the end points separately so they're drawn last.
         let board = gameBoard //This class should never mutate the gameBoard
+        let colorScheme = Settings.theInstance.colorScheme
         
         //Add the grid
         if grid == nil {
@@ -55,7 +54,7 @@ class Animator {
                 //Generate the closure that describes how to draw this tile
                 let item = Drawable() { context in
                     context.setStrokeColor(strokeColor)
-                    let fillColor = self.colorScheme.tileColors[tile.kind]?.cgColor
+                    let fillColor = colorScheme.tileColors[tile.kind]?.cgColor
                     context.setLineWidth(borderWidth)
                     context.setFillColor(fillColor!)
                     let tileRect = CGRect(x: xLoc, y: yLoc, width: self.tileSize, height: self.tileSize)
