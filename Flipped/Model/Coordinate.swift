@@ -8,15 +8,6 @@
 
 struct Coordinate : Equatable {
     
-    enum Direction {
-        case North
-        case East
-        case South
-        case West
-    }
-    
-    static let directions: [Direction] = [.North, .East, .South, .West]
-    
     var x: Int
     var y: Int
     
@@ -32,6 +23,15 @@ struct Coordinate : Equatable {
         let yValid = y >= 0 && y < arraySize
         return xValid && yValid
     }
+    
+    enum Direction {
+        case North
+        case East
+        case South
+        case West
+    }
+    
+    static let directions: [Direction] = [.North, .East, .South, .West]
     
     func neighbor(to direction: Direction, with gridSize: Int) -> Coordinate? {
         var neighbor: Coordinate?
