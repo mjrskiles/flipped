@@ -9,6 +9,14 @@
 import Foundation
 
 class LevelBuilder {
+    private init() { }
+    
+    static let levelList = LevelList(worlds: [
+        LevelList.World(title: "World 1", levels: [
+            "1-1",
+            "1-2"])
+        ])
+    
     static func parseLevel(name: String) -> Level {
         let url = Bundle.main.url(forResource: name, withExtension: "plist")!
         let data = try! Data(contentsOf: url)
@@ -40,5 +48,14 @@ class LevelBuilder {
             +     "  end_point_1: \(level.endPoint1.x), \(level.endPoint1.y)\n"
             +     "  end_point_2: \(level.endPoint2.x), \(level.endPoint2.y)\n"
         print(str)
+    }
+    
+    struct LevelList {
+        var worlds: [World]
+        
+        struct World {
+            var title: String
+            var levels: [String]
+        }
     }
 }
