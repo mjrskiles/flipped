@@ -10,4 +10,5 @@ import Foundation
 
 protocol AnimationDispatcher {
     var animationListener: ([Drawable]) -> Void { get set }
+    var completionListener: () -> Void { get set }
 }

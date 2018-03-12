@@ -11,19 +11,26 @@ import UIKit
 
 class Animator : AnimationDispatcher {
     var viewSize: CGSize
-    var gridOffset: CGFloat = 0
+    var gridOffset: CGFloat
     var tileSize: CGFloat
+    var gridSize: Int
+    let gameBoard: GameBoard
     
-    var gridSize = 9
     let strokeWidth = 2
     var grid: Drawable!
-    var animationListener: ([Drawable]) -> Void
     
-    init(forSize viewSize: CGSize) {
+    var animationListener: ([Drawable]) -> Void
+    var completionListener: () -> Void
+    let animationDelay: Double = 0.5
+    
+    init(forBoard board: GameBoard, forViewSize viewSize: CGSize) {
         self.viewSize = viewSize
+        gameBoard = board
+        self.gridSize = board.gridSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
         animationListener = { drawables in print("Animation listener: someone tried to call me without setting me first. Forshame!") }
+        completionListener = { print("Completion listener: haven't you learned to set your callbacks by now?") }
     }
     
 //    convenience init(forSize viewSize: CGSize, withColors colorScheme: ColorScheme) {
@@ -84,7 +91,58 @@ class Animator : AnimationDispatcher {
     }
     
     func animateTurn(_ turn: Turn) {
+        animateTurn(withStateIndex: 0, in: turn)
+    }
+    
+    func animateTurn(withStateIndex index: Int, in turn: Turn) {
+        if index < turn.states.count {
+            let delay = (index == 0) ? 0.0 : animationDelay
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delay) {
+                let colorScheme = Settings.theInstance.colorScheme
+//                let state = turn.states[index]
+                var intermediate = self.drawBoard(from: self.gameBoard)
+                for i in index..<turn.states.count {
+                    let state = turn.states[i]
+                    for transition in state.transitions {
+                        let tile = i == index ? transition.new : transition.old
+                        let x = transition.location.x
+                        let y = transition.location.y
+                        
+                        let item = self.describeTile(tile, x, y, with: colorScheme)
+                        intermediate.append(item)
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.animationListener(intermediate)
+                }
+                self.animateTurn(withStateIndex: (index + 1), in: turn)
+            }
+        }
+        else {
+            DispatchQueue.main.async {
+                self.completionListener()
+            }
+        }
+    }
+    
+    func describeTile(_ tile: Tile, _ x: Int, _ y: Int, with colorScheme: ColorScheme) -> Drawable {
+        let isEndPoint = self.gameBoard.isEndPoint(Coordinate(x,y))
+        let strokeColor = isEndPoint ? colorScheme.highlightColor.cgColor : UIColor.lightGray.cgColor
+        let fillColor = colorScheme.tileColors[tile.kind]?.cgColor
+        let strokeWidth = isEndPoint ? CGFloat(self.strokeWidth * 3) : CGFloat(self.strokeWidth)
+        let xLoc = tileSize * CGFloat(x)
+        let yLoc = tileSize * CGFloat(y) + gridOffset
         
+        let item = Drawable() { context in
+            context.setStrokeColor(strokeColor)
+            context.setLineWidth(strokeWidth)
+            context.setFillColor(fillColor!)
+            let tileRect = CGRect(x: xLoc, y: yLoc, width: self.tileSize, height: self.tileSize)
+            context.fill(tileRect)
+            context.stroke(tileRect)
+        }
+        
+        return item
     }
     
     func describeGrid() -> Drawable {

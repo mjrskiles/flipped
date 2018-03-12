@@ -56,7 +56,12 @@ class Game : Observable {
     // Iterates the game board after a tile is placed.
     // Returns a Turn object, which is a bundle of the intermediate board states.
     func solveTurn(startedBy tile: Tile, at location: Coordinate) -> Turn {
+        //Instantiate a Turn and add the user-placed tile as the first state transition.
         var turn = Turn(startedBy: tile, at: location)
+        var initialState = StateFrame()
+        initialState.transitions.append(StateFrame.Transition(at: location, from: Tile(kind: .Empty, moveable: false), to: tile))
+        turn.states.append(initialState)
+        
         var modifiedEnteringThisFrame: [(Tile, Coordinate)] = [(tile, location)]
         var modifiedDuringThisFrame: [(Tile, Coordinate)] = []
         

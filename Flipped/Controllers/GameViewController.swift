@@ -23,8 +23,9 @@ class GameViewController: UIViewController, Observer {
         game.addObserver(self)
         
         // Register a listener to get intermediate states that are dispatched asynchronously
-        animator = Animator(forSize: gameView.bounds.size)
-        animator.frameDispatcher.animationListener = self.displayIntermediateState(frame:)
+        animator = Animator(forBoard: game.gameBoard, forViewSize: gameView.bounds.size)
+        animator.animationListener = self.displayIntermediateState(frame:)
+        animator.completionListener = self.finishedAnimatingTurn
         
         gameView.touchListener = self.handleTouch(start:end:)
         gameView.display = animator.drawBoard(from: game.gameBoard)
@@ -50,11 +51,12 @@ class GameViewController: UIViewController, Observer {
     
     // This method is registered as a callback in the animator
     func displayIntermediateState(frame: [Drawable]) {
-        
+        gameView.display = frame
+        gameView.setNeedsDisplay()
     }
     
     func finishedAnimatingTurn() {
-        
+        displayCurrentGameState()
     }
     
     func displayCurrentGameState() {
