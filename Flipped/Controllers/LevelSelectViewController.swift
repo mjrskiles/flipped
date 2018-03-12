@@ -9,7 +9,9 @@
 import UIKit
 
 class LevelSelectViewController: UITableViewController {
-
+    @IBOutlet var table: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +49,21 @@ class LevelSelectViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return LevelBuilder.levelList.worlds[section].title
     }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Start the game with the selected level
+        guard let vc = segue.destination as? GameViewController else {
+            return
+        }
+        guard let indexPath = table.indexPathForSelectedRow else {
+            return
+        }
+        let section = indexPath.section
+        let row = indexPath.row
+        let level = "level_" + LevelBuilder.levelList.worlds[section].levels[row]
+        vc.game = Game(levelName: level)
+    }
  
     /*
      // Override to support conditional editing of the table view.
@@ -82,15 +99,6 @@ class LevelSelectViewController: UITableViewController {
      return true
      }
      */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+ 
 }
 

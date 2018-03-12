@@ -17,10 +17,10 @@ class Game : Observable {
     var pathSolver: PathSolver
     var turnQueue: [Turn] = []
     
-    init(name: String) {
-        self.name = name
+    init(levelName: String) {
+        self.name = levelName
         observers = []
-        level = LevelBuilder.parseLevel(name: name)
+        level = LevelBuilder.parseLevel(name: levelName)
         LevelBuilder.printLevel(level)
         gameBoard = GameBoard(from: level)
         pathSolver = DFSPathSolver()

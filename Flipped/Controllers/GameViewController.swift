@@ -9,7 +9,7 @@
 import UIKit
 
 class GameViewController: UIViewController, Observer {
-    private var game: Game = Game(name: "level_1-2")
+    var game: Game!
     var animator: Animator!
     
     //Outlets
@@ -17,6 +17,9 @@ class GameViewController: UIViewController, Observer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if game == nil {
+            game =  Game(levelName: "level_1-1")
+        }
         game.addObserver(self)
         animator = Animator(forSize: gameView.bounds.size)
         gameView.touchListener = self.handleTouch(start:end:)

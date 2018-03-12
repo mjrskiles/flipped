@@ -240,6 +240,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="buO-78-haS" kind="show" id="01J-JD-nRA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -248,6 +251,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Level Select" id="ggG-gn-ggU"/>
+                    <connections>
+                        <outlet property="table" destination="2wB-YV-hGz" id="Cwz-OB-njf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvl-kN-LJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,4 +302,7 @@
         <image name="settings" width="30" height="30"/>
         <image name="undo_fuction-80" width="80" height="80"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="01J-JD-nRA"/>
+    </inferredMetricsTieBreakers>
 </document>
