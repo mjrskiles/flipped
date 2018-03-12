@@ -21,11 +21,14 @@ class GameViewController: UIViewController, Observer {
             game =  Game(levelName: "level_1-1")
         }
         game.addObserver(self)
+        
+        // Register a listener to get intermediate states that are dispatched asynchronously
         animator = Animator(forSize: gameView.bounds.size)
+        animator.frameDispatcher.animationListener = self.displayIntermediateState(frame:)
+        
         gameView.touchListener = self.handleTouch(start:end:)
         gameView.display = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +40,24 @@ class GameViewController: UIViewController, Observer {
     
     // For Observer protocol
     func update() {
+        if let turn = game.dequeueTurn() {
+            animator.animateTurn(turn)
+        }
+        else {
+            displayCurrentGameState()
+        }
+    }
+    
+    // This method is registered as a callback in the animator
+    func displayIntermediateState(frame: [Drawable]) {
+        
+    }
+    
+    func finishedAnimatingTurn() {
+        
+    }
+    
+    func displayCurrentGameState() {
         gameView.display = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
     }

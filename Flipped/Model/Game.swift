@@ -16,6 +16,7 @@ class Game : Observable {
     let gameBoard: GameBoard
     var pathSolver: PathSolver
     var turnQueue: [Turn] = []
+    var undoStack: [Turn] = []
     
     init(levelName: String) {
         self.name = levelName
@@ -36,6 +37,7 @@ class Game : Observable {
             //Store the turn to animate and maintain game state
             let turn = solveTurn(startedBy: newTile, at: location)
             turnQueue.append(turn)
+            undoStack.append(turn)
             
             //Check if this turn completes the level.
             let won = pathSolver.checkForConnectedPath(on: gameBoard)
@@ -87,8 +89,8 @@ class Game : Observable {
     }
     
     func undoTurn() {
-        if !turnQueue.isEmpty {
-            let lastTurn = turnQueue.removeLast()
+        if !undoStack.isEmpty {
+            let lastTurn = undoStack.removeLast()
             for state in lastTurn.states {
                 for transition in state.transitions {
                     gameBoard.setTile(transition.old, location: transition.location)
@@ -99,7 +101,16 @@ class Game : Observable {
         }
     }
     
-    // Protocol methods
+    func dequeueTurn() -> Turn? {
+        var turn: Turn?
+        
+        if !turnQueue.isEmpty {
+            turn = turnQueue.remove(at: 0)
+        }
+        return turn
+    }
+    
+    // Observable protocol methods
     
     func notify() {
         for obs in observers {

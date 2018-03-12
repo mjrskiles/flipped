@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Animator {
+class Animator : AnimationDispatcher {
     var viewSize: CGSize
     var gridOffset: CGFloat = 0
     var tileSize: CGFloat
@@ -17,11 +17,13 @@ class Animator {
     var gridSize = 9
     let strokeWidth = 2
     var grid: Drawable!
+    var animationListener: ([Drawable]) -> Void
     
     init(forSize viewSize: CGSize) {
         self.viewSize = viewSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
+        animationListener = { drawables in print("Animation listener: someone tried to call me without setting me first. Forshame!") }
     }
     
 //    convenience init(forSize viewSize: CGSize, withColors colorScheme: ColorScheme) {
@@ -81,8 +83,8 @@ class Animator {
         return frames
     }
     
-    func animateTurn(_ turn: Turn) -> [Drawable] {
-        return []
+    func animateTurn(_ turn: Turn) {
+        
     }
     
     func describeGrid() -> Drawable {

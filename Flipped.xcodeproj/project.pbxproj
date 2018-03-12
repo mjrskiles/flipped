@@ -16,6 +16,7 @@
 		4C18D0522046729A009B5545 /* FlippedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D0512046729A009B5545 /* FlippedTests.swift */; };
 		4C18D05D2046729A009B5545 /* FlippedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D05C2046729A009B5545 /* FlippedUITests.swift */; };
 		4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D06A20467422009B5545 /* SettingsViewController.swift */; };
+		4C3E1024205633DD007E6BC6 /* AnimationDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */; };
 		4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BD2047D64800DD3A8A /* Tile.swift */; };
 		4C91D9C02047D74000DD3A8A /* TileKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BF2047D74000DD3A8A /* TileKind.swift */; };
 		4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C12047E15D00DD3A8A /* GameBoard.swift */; };
@@ -75,6 +76,7 @@
 		4C18D05C2046729A009B5545 /* FlippedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedUITests.swift; sourceTree = "<group>"; };
 		4C18D05E2046729A009B5545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C18D06A20467422009B5545 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDispatcher.swift; sourceTree = "<group>"; };
 		4C91D9BD2047D64800DD3A8A /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		4C91D9BF2047D74000DD3A8A /* TileKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileKind.swift; sourceTree = "<group>"; };
 		4C91D9C12047E15D00DD3A8A /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				4CF2239F204F233700636706 /* Observer.swift */,
 				4CF223A1204F238100636706 /* Observable.swift */,
 				4CED26002054FA0B004C67A5 /* PathSolver.swift */,
+				4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				4CED26012054FA0B004C67A5 /* PathSolver.swift in Sources */,
 				4CF223A7204FA46C00636706 /* Turn.swift in Sources */,
 				4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */,
+				4C3E1024205633DD007E6BC6 /* AnimationDispatcher.swift in Sources */,
 				4C91D9C4204A82E000DD3A8A /* GameView.swift in Sources */,
 				4C91D9C02047D74000DD3A8A /* TileKind.swift in Sources */,
 			);
