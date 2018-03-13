@@ -17,10 +17,12 @@ struct Turn {
     let tile: Tile
     let location: Coordinate
     var states: [StateFrame] = []
+    let boardSnapshot: GameBoard
     
-    init(startedBy tile: Tile, at location: Coordinate) {
+    init(startedBy tile: Tile, at location: Coordinate, on board: GameBoard) {
         self.tile = tile
         self.location = location
+        self.boardSnapshot = board
     }
     
     public var description: String {

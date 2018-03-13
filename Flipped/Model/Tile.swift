@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Tile {
+struct Tile {
     var kind: TileKind
     var moveable: Bool
     

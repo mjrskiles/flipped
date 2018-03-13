@@ -39,6 +39,18 @@ class GameBoard {
         endPoint2 = Coordinate(level.endPoint2.x, level.endPoint2.y)
     }
     
+    private init(_ gridSize: Int, _ board: [[Tile]], _ endPoint1: Coordinate, _ endPoint2: Coordinate) {
+        self.gridSize = gridSize
+        self.board = board
+        self.endPoint1 = endPoint1
+        self.endPoint2 = endPoint2
+    }
+    
+    //Returns a deep copy of itself
+    func copy() -> GameBoard {
+        return GameBoard(gridSize, board, endPoint1, endPoint2)
+    }
+    
     func isOpenSpace(_ location: Coordinate) -> Bool {
         return board[location.x][location.y].kind == .Empty
     }

@@ -21,7 +21,7 @@ class Animator : AnimationDispatcher {
     
     var animationListener: ([Drawable]) -> Void
     var completionListener: () -> Void
-    let animationDelay: Double = 0.3
+    let animationDelay: Double = 1
     var isAnimating: Bool = false
     
     init(forBoard board: GameBoard, forViewSize viewSize: CGSize) {
@@ -33,11 +33,6 @@ class Animator : AnimationDispatcher {
         animationListener = { drawables in print("Animation listener: someone tried to call me without setting me first. Forshame!") }
         completionListener = { print("Completion listener: haven't you learned to set your callbacks by now?") }
     }
-    
-//    convenience init(forSize viewSize: CGSize, withColors colorScheme: ColorScheme) {
-//        self.init(forSize: viewSize)
-//        self.colorScheme = colorScheme
-//    }
     
     func drawBoard(from gameBoard: GameBoard) -> [Drawable] {
         var frames: [Drawable] = []
@@ -101,16 +96,16 @@ class Animator : AnimationDispatcher {
             let delay = (index == 0) ? 0.0 : animationDelay
             DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delay) {
                 let colorScheme = Settings.theInstance.colorScheme
-//                let state = turn.states[index]
-                var intermediate = self.drawBoard(from: self.gameBoard)
-                for i in index..<turn.states.count {
+                var intermediate = self.drawBoard(from: turn.boardSnapshot)
+                //Draw the new tiles on top of the old board
+                for i in 0...index {
                     let state = turn.states[i]
                     for transition in state.transitions {
-                        let tile = i == index ? transition.new : transition.old
+                        let tile = transition.new
                         let x = transition.location.x
                         let y = transition.location.y
                         
-                        let item = self.describeTile(tile, x, y, with: colorScheme)
+                        let item = self.describeTile(tile, x, y, on: turn.boardSnapshot, with: colorScheme)
                         intermediate.append(item)
                     }
                 }
@@ -128,7 +123,7 @@ class Animator : AnimationDispatcher {
         }
     }
     
-    func describeTile(_ tile: Tile, _ x: Int, _ y: Int, with colorScheme: ColorScheme) -> Drawable {
+    func describeTile(_ tile: Tile, _ x: Int, _ y: Int, on board: GameBoard, with colorScheme: ColorScheme) -> Drawable {
         let isEndPoint = self.gameBoard.isEndPoint(Coordinate(x,y))
         let strokeColor = isEndPoint ? colorScheme.highlightColor.cgColor : UIColor.lightGray.cgColor
         let fillColor = colorScheme.tileColors[tile.kind]?.cgColor

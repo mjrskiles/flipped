@@ -10,6 +10,7 @@ import UIKit
 
 class GameView: UIView {
     var display: [Drawable] = []
+    var queuedTiles: [Drawable] = []
     
     //Touch related fields
     var first: CGPoint = CGPoint.zero
@@ -20,6 +21,9 @@ class GameView: UIView {
         if let context = UIGraphicsGetCurrentContext() {
             for item in display {
                 item.draw(context)
+            }
+            for tile in queuedTiles {
+                tile.draw(context)
             }
         }
     }
