@@ -37,6 +37,11 @@ class GameViewController: UIViewController, Observer {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        animator.viewSizeDidChange(to: gameView.bounds.size)
+        displayCurrentGameState()
+    }
+    
     // Displays the game board according to the most up to date game state
     func displayCurrentGameState() {
         gameView.display = animator.drawBoard(from: game.gameBoard)
@@ -51,6 +56,7 @@ class GameViewController: UIViewController, Observer {
     
     // This method is registered as a callback in the animator
     func finishedAnimatingTurn() {
+        print("current viewsize: \(gameView.bounds.size)")
         update()
     }
     

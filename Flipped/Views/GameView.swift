@@ -25,6 +25,13 @@ class GameView: UIView {
             for tile in queuedTiles {
                 tile.draw(context)
             }
+            
+            // dashed lines
+            let shortDash : [CGFloat] = [ 4, 4 ]
+            context.setLineDash(phase: 0, lengths: shortDash)
+            context.move(to: CGPoint(x: 370, y: 40))
+            context.addLine(to: CGPoint(x: 400, y: 500))
+            context.strokePath()
         }
     }
     

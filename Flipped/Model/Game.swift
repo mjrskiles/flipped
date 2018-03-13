@@ -22,7 +22,7 @@ class Game : Observable {
         self.name = levelName
         observers = []
         level = LevelBuilder.parseLevel(name: levelName)
-        LevelBuilder.printLevel(level)
+//        LevelBuilder.printLevel(level)
         gameBoard = GameBoard(from: level)
         pathSolver = DFSPathSolver()
     }

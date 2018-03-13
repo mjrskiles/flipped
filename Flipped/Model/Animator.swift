@@ -21,7 +21,7 @@ class Animator : AnimationDispatcher {
     
     var animationListener: ([Drawable]) -> Void
     var completionListener: () -> Void
-    let animationDelay: Double = 1
+    let animationDelay: Double = 0.3
     var isAnimating: Bool = false
     
     init(forBoard board: GameBoard, forViewSize viewSize: CGSize) {
@@ -30,8 +30,15 @@ class Animator : AnimationDispatcher {
         self.gridSize = board.gridSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
+        print("viewSize: \(viewSize), tileSize: \(tileSize)")
         animationListener = { drawables in print("Animation listener: someone tried to call me without setting me first. Forshame!") }
         completionListener = { print("Completion listener: haven't you learned to set your callbacks by now?") }
+    }
+    
+    func viewSizeDidChange(to newSize: CGSize) {
+        viewSize = newSize
+        tileSize = viewSize.width / CGFloat(gridSize)
+        gridOffset = (viewSize.height - viewSize.width) / 2
     }
     
     func drawBoard(from gameBoard: GameBoard) -> [Drawable] {
