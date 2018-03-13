@@ -87,13 +87,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-HE-XxC" customClass="GameView" customModule="Flipped" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gv-cN-ddq">
-                                        <rect key="frame" x="147" y="488" width="80" height="80"/>
+                                    <button opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gv-cN-ddq">
+                                        <rect key="frame" x="147" y="493" width="80" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="UWZ-Qz-zsG"/>
-                                            <constraint firstAttribute="width" constant="80" id="l22-ta-fjl"/>
+                                            <constraint firstAttribute="height" constant="80" id="JNr-je-No0"/>
+                                            <constraint firstAttribute="width" constant="80" id="tVb-bl-WOI"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="undo_fuction-80"/>
+                                        <state key="normal" image="undo_160_black"/>
+                                        <state key="selected" image="undo_160_blue"/>
+                                        <state key="highlighted" image="undo_160_blue"/>
                                         <connections>
                                             <action selector="undoPressed:" destination="buO-78-haS" eventType="touchUpInside" id="mM9-Pf-6Qg"/>
                                         </connections>
@@ -101,8 +103,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1Gv-cN-ddq" secondAttribute="bottom" constant="30" id="aKA-hw-X5Q"/>
                                     <constraint firstItem="1Gv-cN-ddq" firstAttribute="centerX" secondItem="jg6-HE-XxC" secondAttribute="centerX" id="faI-CX-glC"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Gv-cN-ddq" secondAttribute="bottom" constant="35" id="jZg-VV-qU1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -213,7 +215,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZN-45-dzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="824"/>
+            <point key="canvasLocation" x="-1" y="838"/>
         </scene>
         <!--Level Select-->
         <scene sceneID="E06-Am-oRX">
@@ -300,9 +302,10 @@
         <image name="home-7" width="30" height="30"/>
         <image name="level_select" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
-        <image name="undo_fuction-80" width="80" height="80"/>
+        <image name="undo_160_black" width="160" height="160"/>
+        <image name="undo_160_blue" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="01J-JD-nRA"/>
+        <segue reference="iG4-70-Lec"/>
     </inferredMetricsTieBreakers>
 </document>

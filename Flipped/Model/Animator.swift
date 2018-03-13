@@ -21,7 +21,8 @@ class Animator : AnimationDispatcher {
     
     var animationListener: ([Drawable]) -> Void
     var completionListener: () -> Void
-    let animationDelay: Double = 0.5
+    let animationDelay: Double = 0.3
+    var isAnimating: Bool = false
     
     init(forBoard board: GameBoard, forViewSize viewSize: CGSize) {
         self.viewSize = viewSize
@@ -91,6 +92,7 @@ class Animator : AnimationDispatcher {
     }
     
     func animateTurn(_ turn: Turn) {
+        isAnimating = true
         animateTurn(withStateIndex: 0, in: turn)
     }
     
@@ -120,6 +122,7 @@ class Animator : AnimationDispatcher {
         }
         else {
             DispatchQueue.main.async {
+                self.isAnimating = false;
                 self.completionListener()
             }
         }

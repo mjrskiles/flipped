@@ -37,16 +37,10 @@ class GameViewController: UIViewController, Observer {
         // Dispose of any resources that can be recreated.
     }
     
-
-    
-    // For Observer protocol
-    func update() {
-        if let turn = game.dequeueTurn() {
-            animator.animateTurn(turn)
-        }
-        else {
-            displayCurrentGameState()
-        }
+    // Displays the game board according to the most up to date game state
+    func displayCurrentGameState() {
+        gameView.display = animator.drawBoard(from: game.gameBoard)
+        gameView.setNeedsDisplay()
     }
     
     // This method is registered as a callback in the animator
@@ -55,16 +49,25 @@ class GameViewController: UIViewController, Observer {
         gameView.setNeedsDisplay()
     }
     
+    // This method is registered as a callback in the animator
     func finishedAnimatingTurn() {
-        displayCurrentGameState()
+        update()
     }
     
-    func displayCurrentGameState() {
-        gameView.display = animator.drawBoard(from: game.gameBoard)
-        gameView.setNeedsDisplay()
+    // For Observer protocol
+    func update() {
+        if !animator.isAnimating {
+            if let turn = game.dequeueTurn() {
+                animator.animateTurn(turn)
+            }
+            else {
+                displayCurrentGameState()
+            }
+        }
     }
     
     // This method is registered as the touchListener in gameView
+    // It converts the touch input into a coordinate on the grid
     func handleTouch(start: CGPoint, end: CGPoint) {
         let gridTop = animator.gridOffset
         let gridBottom = (animator.gridOffset + gameView.bounds.size.width)
@@ -86,6 +89,8 @@ class GameViewController: UIViewController, Observer {
     @IBAction func undoPressed(_ sender: UIButton) {
         game.undoTurn()
     }
+    
+    
     
     /*
     // MARK: - Navigation
