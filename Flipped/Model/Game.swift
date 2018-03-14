@@ -14,6 +14,7 @@ class Game : Observable {
     var level: Level
     let name: String
     
+    var won: Bool = false
     let gameBoard: GameBoard
     var pathSolver: PathSolver
     var tileBank: [TileKind:Int] = [:]
@@ -48,7 +49,7 @@ class Game : Observable {
             }
             
             //Check if this turn completes the level.
-            let won = pathSolver.checkForConnectedPath(on: gameBoard)
+            won = pathSolver.checkForConnectedPath(on: gameBoard)
             if won {
                 print("Level complete!!")
             }

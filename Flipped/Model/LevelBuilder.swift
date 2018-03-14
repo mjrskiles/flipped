@@ -24,16 +24,25 @@ class LevelBuilder {
         return try! decoder.decode(Level.self, from: data)
     }
     
-    static func getLevelNameAfter(world: Int, level: Int) -> String? {
+    static func getLevelNameAfter(world: Int, level: Int) -> (String, Int, Int)? {
+        var name: String
+        var w: Int
+        var l: Int
         //subtract 1 to compensate for 0 based index
         if (world-1) < levelList.worlds.count {
             //level should actually be the correct index for the next level, since the first level in a world is level 1
             if level < levelList.worlds[world-1].levels.count {
-                return levelList.worlds[world-1].levels[level]
+                name = "level_\(levelList.worlds[world-1].levels[level])"
+                w = world
+                l = level+1
+                return (name, w, l)
             }
             else if (world) < levelList.worlds.count {
                 if !levelList.worlds[world].levels.isEmpty {
-                    return levelList.worlds[world].levels[0]
+                    name = "level_\(levelList.worlds[world].levels[0])"
+                    w = world+1
+                    l = 1
+                    return (name, w, l)
                 }
             }
         }

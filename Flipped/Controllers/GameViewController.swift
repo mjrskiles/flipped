@@ -10,6 +10,8 @@ import UIKit
 
 class GameViewController: UIViewController, Observer {
     var game: Game!
+    var world: Int = 1
+    var level: Int = 1
     var animator: Animator!
     
     //Outlets
@@ -20,9 +22,16 @@ class GameViewController: UIViewController, Observer {
         initializeNewGame()
     }
     
+    
+    @IBAction func undoPressed(_ sender: UIButton) {
+        game.undoTurn()
+    }
+    
     func initializeNewGame() {
         if game == nil {
             game =  Game(levelName: "level_1-1")
+            world = 1
+            level = 1
         }
         game.addObserver(self)
         
@@ -37,6 +46,19 @@ class GameViewController: UIViewController, Observer {
         gameView.bank = animator.describeTileBank()
         gameView.bankAmounts = game.tileBank
         gameView.setNeedsDisplay()
+    }
+    
+    func loadNextLevel() -> Bool {
+        if let (name, w, l) = LevelBuilder.getLevelNameAfter(world: world, level: level) {
+            game = Game(levelName: name)
+            world = w
+            level = l
+            initializeNewGame()
+            return true
+        }
+        else {
+            return false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,6 +96,9 @@ class GameViewController: UIViewController, Observer {
     func finishedAnimatingTurn() {
         print("current viewsize: \(gameView.bounds.size)")
         update()
+        if game.won {
+            promptLevelComplete()
+        }
     }
     
     // For Observer protocol
@@ -110,7 +135,30 @@ class GameViewController: UIViewController, Observer {
         }
     }
     
-    @IBAction func undoPressed(_ sender: UIButton) {
-        game.undoTurn()
+    // Displays an action sheet prompting the user to force an invalid action.
+    // If the user confirms, the action is forced.
+    func promptLevelComplete() {
+        let title = "Level \(world)-\(level)"
+        let message = "Level Complete!!"
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        // Create the action.
+        let cancelAction = UIAlertAction(title: "OK", style: .destructive)
+        
+        let confirmAction = UIAlertAction(title: "Next Level", style: .default) { action in
+            //Carry out the forced action
+            let success = self.loadNextLevel()
+            
+            //Build the alert confirmation
+            if !success {
+                let okayController = UIAlertController(title: "Wait a second!", message: "There is no next level!\nCongrats?", preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                okayController.addAction(okayAction)
+                self.present(okayController, animated: true, completion: nil)
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
