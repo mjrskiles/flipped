@@ -10,18 +10,25 @@ import Foundation
 import UIKit
 
 class Animator : AnimationDispatcher {
+    //constants
+    let animationDelay: Double = 0.3
+    
+    //view size dependent vars
     var viewSize: CGSize
+    var tileBankWidth: CGFloat
+    var tileBankHeight: CGFloat
+    var tileBankPosition: CGPoint
+    var strokeWidth = 2
     var gridOffset: CGFloat
     var tileSize: CGFloat
+    
     var gridSize: Int
     let gameBoard: GameBoard
     
-    let strokeWidth = 2
     var grid: Drawable!
     
     var animationListener: ([Drawable]) -> Void
     var completionListener: () -> Void
-    let animationDelay: Double = 0.3
     var isAnimating: Bool = false
     
     init(forBoard board: GameBoard, forViewSize viewSize: CGSize) {
@@ -30,15 +37,27 @@ class Animator : AnimationDispatcher {
         self.gridSize = board.gridSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
-        print("viewSize: \(viewSize), tileSize: \(tileSize)")
+        tileBankWidth = tileSize * 4
+        tileBankHeight = tileSize * 2
+        tileBankPosition = CGPoint(x: (viewSize.width - tileBankWidth) / 2, y: gridOffset - tileBankHeight - 10)
+
+        
+        // Callbacks to be set after init
         animationListener = { drawables in print("Animation listener: someone tried to call me without setting me first. Forshame!") }
         completionListener = { print("Completion listener: haven't you learned to set your callbacks by now?") }
     }
     
     func viewSizeDidChange(to newSize: CGSize) {
+        updateViewSizeDependents(with: newSize)
+    }
+    
+    func updateViewSizeDependents(with newSize: CGSize) {
         viewSize = newSize
         tileSize = viewSize.width / CGFloat(gridSize)
         gridOffset = (viewSize.height - viewSize.width) / 2
+        tileBankWidth = tileSize * 4
+        tileBankHeight = tileSize * 2
+        tileBankPosition = CGPoint(x: (viewSize.width - tileBankWidth) / 2, y: gridOffset - tileBankHeight - 10)
     }
     
     func drawBoard(from gameBoard: GameBoard) -> [Drawable] {
@@ -52,6 +71,10 @@ class Animator : AnimationDispatcher {
             grid = describeGrid()
         }
         frames.append(grid)
+        
+        //Add the tile bank
+        let bank = describeTileBank()
+        frames.append(bank)
         
         for i in 0..<board.board.count {
             for j in 0..<board.board[i].count {
@@ -98,6 +121,8 @@ class Animator : AnimationDispatcher {
         animateTurn(withStateIndex: 0, in: turn)
     }
     
+    // Animates a turn by asynchronously dispatching the next state frame to be drawn after the frame delay
+    // And calling itself recursively until there are no more states to draw.
     func animateTurn(withStateIndex index: Int, in turn: Turn) {
         if index < turn.states.count {
             let delay = (index == 0) ? 0.0 : animationDelay
@@ -159,6 +184,7 @@ class Animator : AnimationDispatcher {
                     context.move(to: CGPoint(x: 0, y: lineOffset))
                     context.addLine(to: CGPoint(x: self.viewSize.width, y: lineOffset))
                     context.strokePath()
+                    
                     //draw vertical
                     context.move(to: CGPoint(x: lineOffset, y: self.gridOffset))
                     context.addLine(to: CGPoint(x: lineOffset, y: self.viewSize.width + self.gridOffset))
@@ -167,5 +193,46 @@ class Animator : AnimationDispatcher {
             }
         }
         return grid
+    }
+    
+    func describeTileBank() -> Drawable {
+        let bank: Drawable = Drawable() { context in
+            if let context = UIGraphicsGetCurrentContext() {
+                // dashed lines
+                let shortDash : [CGFloat] = [ 4, 4 ]
+                context.setLineDash(phase: 0, lengths: shortDash)
+                context.setStrokeColor(UIColor.darkGray.cgColor)
+                context.setLineWidth(4)
+                
+                let rect = CGRect(origin: self.tileBankPosition, size: CGSize(width: self.tileBankWidth, height: self.tileBankHeight))
+                let clipPath: CGPath = UIBezierPath(roundedRect: rect, cornerRadius: 10).cgPath
+                
+                context.addPath(clipPath)
+                context.closePath()
+                context.strokePath()
+
+                context.setLineDash(phase: 0, lengths: [])
+            }
+        }
+        return bank
+    }
+    
+    func getBankTiles() -> [BankTileDescription] {
+        // Determine the rectangle sizes and locations
+        var tiles: [BankTileDescription] = []
+        
+        let bankTileY = CGFloat((tileBankPosition.y + (tileBankHeight - tileSize) / 2))
+        let aTileX = CGFloat(tileBankPosition.x + (tileBankWidth / 4) - (tileSize / 2))
+        let bTileX = CGFloat(aTileX + (tileBankWidth / 2))
+        let rectAPoint = CGPoint(x: aTileX, y: bankTileY)
+        let rectBPoint = CGPoint(x: bTileX, y: bankTileY)
+        let rectSize = CGSize(width: tileSize, height: tileSize)
+        
+        let rectA = CGRect(origin: rectAPoint, size: rectSize)
+        let rectB = CGRect(origin: rectBPoint, size: rectSize)
+        
+        tiles.append(BankTileDescription(rect: rectA, homeLocation: rectAPoint, kind: .Color_A))
+        tiles.append(BankTileDescription(rect: rectB, homeLocation: rectBPoint, kind: .Color_B))
+        return tiles
     }
 }

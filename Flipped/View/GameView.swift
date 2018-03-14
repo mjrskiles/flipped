@@ -9,8 +9,11 @@
 import UIKit
 
 class GameView: UIView {
-    var display: [Drawable] = []
-    var queuedTiles: [Drawable] = []
+    var display: [Drawable] = [] // The board state
+    var queuedTiles: [Drawable] = [] // Tiles that have been placed but not animated yet
+    
+    //The bank tiles. These need to be set by the animator via the view controller
+    var bankTiles: [BankTileDescription] = []
     
     //Touch related fields
     var first: CGPoint = CGPoint.zero
@@ -26,12 +29,14 @@ class GameView: UIView {
                 tile.draw(context)
             }
             
-            // dashed lines
-            let shortDash : [CGFloat] = [ 4, 4 ]
-            context.setLineDash(phase: 0, lengths: shortDash)
-            context.move(to: CGPoint(x: 370, y: 40))
-            context.addLine(to: CGPoint(x: 400, y: 500))
-            context.strokePath()
+            //Draw the bank tiles
+            context.setStrokeColor(UIColor.lightGray.cgColor)
+            context.setLineWidth(2)
+            for tile in bankTiles {
+                context.setFillColor(Settings.theInstance.colorScheme.tileColors[tile.kind]!.cgColor)
+                context.fill(tile.rect)
+                context.stroke(tile.rect)
+            }
         }
     }
     

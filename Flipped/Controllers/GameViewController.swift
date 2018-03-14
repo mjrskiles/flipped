@@ -27,6 +27,7 @@ class GameViewController: UIViewController, Observer {
         animator.animationListener = self.displayIntermediateState(frame:)
         animator.completionListener = self.finishedAnimatingTurn
         
+        setBankTiles()
         gameView.touchListener = self.handleTouch(start:end:)
         gameView.display = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
@@ -37,9 +38,18 @@ class GameViewController: UIViewController, Observer {
         // Dispose of any resources that can be recreated.
     }
     
+    // Added this override function because of an issue with iPhone 7 plus and 8 plus
+    // where the gameView.bounds.size would change after the initial layout.
     override func viewDidLayoutSubviews() {
         animator.viewSizeDidChange(to: gameView.bounds.size)
         displayCurrentGameState()
+    }
+    
+    func setBankTiles() {
+        let tiles = animator.getBankTiles()
+        for rect in tiles {
+            gameView.bankTiles.append(rect)
+        }
     }
     
     // Displays the game board according to the most up to date game state

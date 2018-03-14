@@ -17,6 +17,7 @@
 		4C18D05D2046729A009B5545 /* FlippedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D05C2046729A009B5545 /* FlippedUITests.swift */; };
 		4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D06A20467422009B5545 /* SettingsViewController.swift */; };
 		4C3E1024205633DD007E6BC6 /* AnimationDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */; };
+		4C3E10262058AD2D007E6BC6 /* BankTileDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E10252058AD2D007E6BC6 /* BankTileDescription.swift */; };
 		4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BD2047D64800DD3A8A /* Tile.swift */; };
 		4C91D9C02047D74000DD3A8A /* TileKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BF2047D74000DD3A8A /* TileKind.swift */; };
 		4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C12047E15D00DD3A8A /* GameBoard.swift */; };
@@ -77,6 +78,7 @@
 		4C18D05E2046729A009B5545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C18D06A20467422009B5545 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDispatcher.swift; sourceTree = "<group>"; };
+		4C3E10252058AD2D007E6BC6 /* BankTileDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTileDescription.swift; sourceTree = "<group>"; };
 		4C91D9BD2047D64800DD3A8A /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		4C91D9BF2047D74000DD3A8A /* TileKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileKind.swift; sourceTree = "<group>"; };
 		4C91D9C12047E15D00DD3A8A /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 				4C18D0482046729A009B5545 /* Info.plist */,
 				4CED26062055EE3A004C67A5 /* settings.plist */,
 				4C91D9CB204BB69300DD3A8A /* Model */,
-				4C91D9CA204BB66D00DD3A8A /* Views */,
+				4C91D9CA204BB66D00DD3A8A /* View */,
 				4C91D9C9204BB5EE00DD3A8A /* Controllers */,
 				4C91D9D2204BD0D200DD3A8A /* Levels */,
 				4CED25FD2054F2E0004C67A5 /* ColorSchemes */,
@@ -196,12 +198,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		4C91D9CA204BB66D00DD3A8A /* Views */ = {
+		4C91D9CA204BB66D00DD3A8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4CF2239D204E78E900636706 /* Drawable.swift */,
+				4CF223A4204F25E100636706 /* Animator.swift */,
 				4C91D9C3204A82E000DD3A8A /* GameView.swift */,
+				4C3E10252058AD2D007E6BC6 /* BankTileDescription.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		4C91D9CB204BB69300DD3A8A /* Model */ = {
@@ -213,8 +218,6 @@
 				4C91D9CE204BC9FD00DD3A8A /* Level.swift */,
 				4C91D9D3204BD71300DD3A8A /* LevelBuilder.swift */,
 				4C91D9D5204BD89200DD3A8A /* Game.swift */,
-				4CF2239D204E78E900636706 /* Drawable.swift */,
-				4CF223A4204F25E100636706 /* Animator.swift */,
 				4CF223A6204FA46C00636706 /* Turn.swift */,
 				4CED25F7205355A9004C67A5 /* Settings.swift */,
 				4CED25F920538539004C67A5 /* Coordinate.swift */,
@@ -397,6 +400,7 @@
 				4C18D03F2046729A009B5545 /* LevelSelectViewController.swift in Sources */,
 				4C18D03B2046729A009B5545 /* AppDelegate.swift in Sources */,
 				4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */,
+				4C3E10262058AD2D007E6BC6 /* BankTileDescription.swift in Sources */,
 				4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */,
 				4CF223A5204F25E100636706 /* Animator.swift in Sources */,
 				4C91D9C6204A859A00DD3A8A /* GameViewController.swift in Sources */,
