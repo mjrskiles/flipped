@@ -86,6 +86,7 @@ class GameViewController: UIViewController, Observer {
     func handleTouch(start: CGPoint, end: CGPoint, tileKind: TileKind) {
         let gridTop = animator.gridOffset
         let gridBottom = (animator.gridOffset + gameView.bounds.size.width)
+        
         if end.y > gridTop && end.y < gridBottom {
             let yOffsetIntoGrid = Double(end.y - gridTop)
             let xOffsetIntoGrid = Double(end.x)
@@ -104,17 +105,4 @@ class GameViewController: UIViewController, Observer {
     @IBAction func undoPressed(_ sender: UIButton) {
         game.undoTurn()
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

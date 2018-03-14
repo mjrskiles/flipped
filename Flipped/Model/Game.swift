@@ -13,8 +13,10 @@ class Game : Observable {
     
     var level: Level
     let name: String
+    
     let gameBoard: GameBoard
     var pathSolver: PathSolver
+    var tileBank: [TileKind:Int] = [:]
     var turnQueue: [Turn] = []
     var undoStack: [Turn] = []
     
@@ -25,6 +27,7 @@ class Game : Observable {
 //        LevelBuilder.printLevel(level)
         gameBoard = GameBoard(from: level)
         pathSolver = DFSPathSolver()
+        tileBank = level.buildBankDictionary()
     }
     
     //Attempts to place a tile on the board at the specified location.
@@ -38,6 +41,11 @@ class Game : Observable {
             let turn = solveTurn(startedBy: newTile, at: location)
             turnQueue.append(turn)
             undoStack.append(turn)
+            
+            //Subtract from the tile counter
+            if tileBank[newTile.kind] != nil {
+                tileBank[newTile.kind]! -= 1
+            }
             
             //Check if this turn completes the level.
             let won = pathSolver.checkForConnectedPath(on: gameBoard)

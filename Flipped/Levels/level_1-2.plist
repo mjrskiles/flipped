@@ -110,5 +110,20 @@
 		<key>y</key>
 		<integer>5</integer>
 	</dict>
+	<key>bank</key>
+	<array>
+		<dict>
+			<key>kind</key>
+			<string>Color_A</string>
+			<key>amount</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>kind</key>
+			<string>Color_B</string>
+			<key>amount</key>
+			<integer>1</integer>
+		</dict>
+	</array>
 </dict>
 </plist>

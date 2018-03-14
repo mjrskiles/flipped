@@ -66,5 +66,14 @@
 		<key>y</key>
 		<integer>4</integer>
 	</dict>
+	<key>bank</key>
+	<array>
+		<dict>
+			<key>kind</key>
+			<string>Color_A</string>
+			<key>amount</key>
+			<integer>1</integer>
+		</dict>
+	</array>
 </dict>
 </plist>
