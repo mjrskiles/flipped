@@ -33,7 +33,7 @@ class Game : Observable {
     //Attempts to place a tile on the board at the specified location.
     //Returns true if the tile was accepted.
     func acceptTile(kind: TileKind, at location: Coordinate) -> Bool {
-        if gameBoard.isOpenSpace(location) {
+        if !tileLimitIsReached(for: kind) && gameBoard.isOpenSpace(location) {
             let newTile = Tile(kind: kind, moveable: true)
             gameBoard.setTile(newTile, x: location.x, y: location.y)
             
@@ -59,6 +59,20 @@ class Game : Observable {
         else {
             return false
         }
+    }
+    
+    //returns true if the tile limit has been reached for the specified tile kind
+    func tileLimitIsReached(for kind: TileKind) -> Bool {
+        if Settings.theInstance.infiniteTiles {
+            return false
+        }
+        else {
+            return remainingBankAmount(for: kind) <= 0
+        }
+    }
+    
+    func remainingBankAmount(for kind: TileKind) -> Int {
+        return tileBank[kind] ?? 0
     }
     
     // Iterates the game board after a tile is placed.
@@ -109,6 +123,7 @@ class Game : Observable {
                     gameBoard.setTile(transition.old, location: transition.location)
                 }
             }
+            tileBank[lastTurn.tile.kind]! += 1
             gameBoard.setTile(Tile(kind: .Empty, moveable: false), location: lastTurn.location)
             notify()
         }

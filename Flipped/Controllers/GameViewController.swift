@@ -17,6 +17,10 @@ class GameViewController: UIViewController, Observer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeNewGame()
+    }
+    
+    func initializeNewGame() {
         if game == nil {
             game =  Game(levelName: "level_1-1")
         }
@@ -30,6 +34,8 @@ class GameViewController: UIViewController, Observer {
         setBankTiles()
         gameView.touchListener = self.handleTouch(start:end:tileKind:)
         gameView.display = animator.drawBoard(from: game.gameBoard)
+        gameView.bank = animator.describeTileBank()
+        gameView.bankAmounts = game.tileBank
         gameView.setNeedsDisplay()
     }
 
@@ -54,6 +60,7 @@ class GameViewController: UIViewController, Observer {
     // Displays the game board according to the most up to date game state
     func displayCurrentGameState() {
         gameView.display = animator.drawBoard(from: game.gameBoard)
+        gameView.bank = animator.describeTileBank()
         gameView.setNeedsDisplay()
     }
     
@@ -71,6 +78,7 @@ class GameViewController: UIViewController, Observer {
     
     // For Observer protocol
     func update() {
+        gameView.bankAmounts = game.tileBank
         if !animator.isAnimating {
             if let turn = game.dequeueTurn() {
                 animator.animateTurn(turn)

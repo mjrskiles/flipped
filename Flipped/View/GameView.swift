@@ -10,10 +10,12 @@ import UIKit
 
 class GameView: UIView {
     var display: [Drawable] = [] // The board state
+    var bank: Drawable = Drawable() { context in print("The tile bank wasn't set!") } // The bank frame
     var queuedTiles: [Drawable] = [] // Tiles that have been placed but not animated yet
     
     //The bank tiles. These need to be set by the animator via the view controller
     var bankTiles: [BankTile] = []
+    var bankAmounts: [TileKind:Int] = [:]
     var currentlyDragging: BankTile?
     var draggedTileIndex: Int!
     
@@ -30,6 +32,7 @@ class GameView: UIView {
             for tile in queuedTiles {
                 tile.draw(context)
             }
+            bank.draw(context)
             
             //Draw the bank tiles
             context.setStrokeColor(UIColor.lightGray.cgColor)
@@ -44,6 +47,17 @@ class GameView: UIView {
                 context.setAlpha(1.0)
             }
             
+            //Draw the bank tile amounts
+            for tile in bankTiles {
+                let text = getBankAmountAsString(for: tile.kind)
+                let textAttr : [NSAttributedStringKey : Any] = [
+                    .foregroundColor : UIColor.darkGray,
+                    .font : UIFont.boldSystemFont(ofSize: CGFloat(tile.labelSize))
+                ]
+                text.draw(at: tile.labelLocation, withAttributes: textAttr)
+            }
+            
+            //Draw the currently dragging tile if necessary
             if let tile = currentlyDragging {
                 context.setFillColor(Settings.theInstance.colorScheme.tileColors[tile.kind]!.cgColor)
                 context.fill(tile.rect)
@@ -99,5 +113,15 @@ class GameView: UIView {
         }
     }
     
+    //Convert int amounts to string for display
+    func getBankAmountAsString(for kind: TileKind) -> String {
+        if Settings.theInstance.infiniteTiles {
+            return "∞"
+        }
+        else {
+            let amount = bankAmounts[kind] ?? 0
+            return String(amount)
+        }
+    }
     
 }

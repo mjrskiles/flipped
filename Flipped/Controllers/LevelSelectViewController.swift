@@ -58,8 +58,10 @@ class LevelSelectViewController: UITableViewController {
         }
         let section = indexPath.section
         let row = indexPath.row
-        let level = "level_" + LevelBuilder.levelList.worlds[section].levels[row]
-        vc.game = Game(levelName: level)
+        if section < LevelBuilder.levelList.worlds.count && row < LevelBuilder.levelList.worlds[section].levels.count {
+            let level = "level_" + LevelBuilder.levelList.worlds[section].levels[row]
+            vc.game = Game(levelName: level)
+        }
     }
  
     /*

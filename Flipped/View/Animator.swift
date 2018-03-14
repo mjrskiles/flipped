@@ -72,10 +72,6 @@ class Animator : AnimationDispatcher {
         }
         frames.append(grid)
         
-        //Add the tile bank
-        let bank = describeTileBank()
-        frames.append(bank)
-        
         for i in 0..<board.board.count {
             for j in 0..<board.board[i].count {
                 //Make calculations outside the closure so unnecessary calculations aren't performed during rendering
@@ -221,7 +217,7 @@ class Animator : AnimationDispatcher {
         // Determine the rectangle sizes and locations
         var tiles: [BankTile] = []
         
-        let bankTileY = CGFloat((tileBankPosition.y + (tileBankHeight - tileSize) / 2))
+        let bankTileY = CGFloat((tileBankPosition.y + (tileBankHeight - tileSize) / 3))
         let aTileX = CGFloat(tileBankPosition.x + (tileBankWidth / 4) - (tileSize / 2))
         let bTileX = CGFloat(aTileX + (tileBankWidth / 2))
         let rectAPoint = CGPoint(x: aTileX, y: bankTileY)
@@ -231,8 +227,14 @@ class Animator : AnimationDispatcher {
         let rectA = CGRect(origin: rectAPoint, size: rectSize)
         let rectB = CGRect(origin: rectBPoint, size: rectSize)
         
-        tiles.append(BankTile(rect: rectA, homeLocation: rectAPoint, kind: .Color_A))
-        tiles.append(BankTile(rect: rectB, homeLocation: rectBPoint, kind: .Color_B))
+        let labelSize: CGFloat = tileSize / 2.0
+        
+        let labelOffset = (tileSize / 2) - (labelSize / 3)
+        let labelLocationA = CGPoint(x: (aTileX + labelOffset), y: bankTileY + tileSize)
+        let labelLocationB = CGPoint(x: (bTileX + labelOffset), y: bankTileY + tileSize)
+        
+        tiles.append(BankTile(rect: rectA, homeLocation: rectAPoint, labelLocation: labelLocationA, labelSize: labelSize, kind: .Color_A))
+        tiles.append(BankTile(rect: rectB, homeLocation: rectBPoint, labelLocation: labelLocationB, labelSize: labelSize, kind: .Color_B))
         return tiles
     }
 }
