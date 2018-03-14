@@ -13,7 +13,7 @@ class GameView: UIView {
     var queuedTiles: [Drawable] = [] // Tiles that have been placed but not animated yet
     
     //The bank tiles. These need to be set by the animator via the view controller
-    var bankTiles: [BankTileDescription] = []
+    var bankTiles: [BankTile] = []
     
     //Touch related fields
     var first: CGPoint = CGPoint.zero

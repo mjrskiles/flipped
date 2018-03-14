@@ -17,7 +17,7 @@
 		4C18D05D2046729A009B5545 /* FlippedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D05C2046729A009B5545 /* FlippedUITests.swift */; };
 		4C18D06B20467422009B5545 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18D06A20467422009B5545 /* SettingsViewController.swift */; };
 		4C3E1024205633DD007E6BC6 /* AnimationDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */; };
-		4C3E10262058AD2D007E6BC6 /* BankTileDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E10252058AD2D007E6BC6 /* BankTileDescription.swift */; };
+		4C3E10282058C9CC007E6BC6 /* BankTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E10272058C9CC007E6BC6 /* BankTile.swift */; };
 		4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BD2047D64800DD3A8A /* Tile.swift */; };
 		4C91D9C02047D74000DD3A8A /* TileKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9BF2047D74000DD3A8A /* TileKind.swift */; };
 		4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91D9C12047E15D00DD3A8A /* GameBoard.swift */; };
@@ -78,7 +78,7 @@
 		4C18D05E2046729A009B5545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C18D06A20467422009B5545 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4C3E1023205633DD007E6BC6 /* AnimationDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDispatcher.swift; sourceTree = "<group>"; };
-		4C3E10252058AD2D007E6BC6 /* BankTileDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTileDescription.swift; sourceTree = "<group>"; };
+		4C3E10272058C9CC007E6BC6 /* BankTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTile.swift; sourceTree = "<group>"; };
 		4C91D9BD2047D64800DD3A8A /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		4C91D9BF2047D74000DD3A8A /* TileKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileKind.swift; sourceTree = "<group>"; };
 		4C91D9C12047E15D00DD3A8A /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
@@ -202,9 +202,9 @@
 			isa = PBXGroup;
 			children = (
 				4CF2239D204E78E900636706 /* Drawable.swift */,
+				4C3E10272058C9CC007E6BC6 /* BankTile.swift */,
 				4CF223A4204F25E100636706 /* Animator.swift */,
 				4C91D9C3204A82E000DD3A8A /* GameView.swift */,
-				4C3E10252058AD2D007E6BC6 /* BankTileDescription.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,8 +399,8 @@
 				4CF223A0204F233700636706 /* Observer.swift in Sources */,
 				4C18D03F2046729A009B5545 /* LevelSelectViewController.swift in Sources */,
 				4C18D03B2046729A009B5545 /* AppDelegate.swift in Sources */,
+				4C3E10282058C9CC007E6BC6 /* BankTile.swift in Sources */,
 				4C91D9BE2047D64800DD3A8A /* Tile.swift in Sources */,
-				4C3E10262058AD2D007E6BC6 /* BankTileDescription.swift in Sources */,
 				4C91D9C22047E15D00DD3A8A /* GameBoard.swift in Sources */,
 				4CF223A5204F25E100636706 /* Animator.swift in Sources */,
 				4C91D9C6204A859A00DD3A8A /* GameViewController.swift in Sources */,

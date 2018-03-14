@@ -217,9 +217,9 @@ class Animator : AnimationDispatcher {
         return bank
     }
     
-    func getBankTiles() -> [BankTileDescription] {
+    func getBankTiles() -> [BankTile] {
         // Determine the rectangle sizes and locations
-        var tiles: [BankTileDescription] = []
+        var tiles: [BankTile] = []
         
         let bankTileY = CGFloat((tileBankPosition.y + (tileBankHeight - tileSize) / 2))
         let aTileX = CGFloat(tileBankPosition.x + (tileBankWidth / 4) - (tileSize / 2))
@@ -231,8 +231,8 @@ class Animator : AnimationDispatcher {
         let rectA = CGRect(origin: rectAPoint, size: rectSize)
         let rectB = CGRect(origin: rectBPoint, size: rectSize)
         
-        tiles.append(BankTileDescription(rect: rectA, homeLocation: rectAPoint, kind: .Color_A))
-        tiles.append(BankTileDescription(rect: rectB, homeLocation: rectBPoint, kind: .Color_B))
+        tiles.append(BankTile(rect: rectA, homeLocation: rectAPoint, kind: .Color_A))
+        tiles.append(BankTile(rect: rectB, homeLocation: rectBPoint, kind: .Color_B))
         return tiles
     }
 }
