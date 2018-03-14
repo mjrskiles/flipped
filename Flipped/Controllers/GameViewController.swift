@@ -14,6 +14,8 @@ class GameViewController: UIViewController, Observer {
     var level: Int = 1
     var animator: Animator!
     
+    var alreadyWon: Bool = false //Used to prevent popping up the level won alert more than once if the player chooses not to leave the level
+    
     //Outlets
     @IBOutlet weak var gameView: GameView!
     
@@ -28,6 +30,7 @@ class GameViewController: UIViewController, Observer {
     }
     
     func initializeNewGame() {
+        alreadyWon = false
         if game == nil {
             game =  Game(levelName: "level_1-1")
             world = 1
@@ -96,7 +99,8 @@ class GameViewController: UIViewController, Observer {
     func finishedAnimatingTurn() {
         print("current viewsize: \(gameView.bounds.size)")
         update()
-        if game.won {
+        if !alreadyWon && game.won {
+            alreadyWon = true
             promptLevelComplete()
         }
     }
