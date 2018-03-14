@@ -20,7 +20,7 @@ class GameView: UIView {
     //Touch related fields
     var first: CGPoint = CGPoint.zero
     var last : CGPoint = CGPoint.zero
-    var touchListener: ((CGPoint, CGPoint) -> (Void))!
+    var touchListener: ((CGPoint, CGPoint, TileKind) -> (Void))!
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
@@ -37,7 +37,7 @@ class GameView: UIView {
             for tile in bankTiles {
                 context.setFillColor(Settings.theInstance.colorScheme.tileColors[tile.kind]!.cgColor)
                 if tile.dragging {
-                    context.setAlpha(0.5)
+                    context.setAlpha(0.3)
                 }
                 context.fill(tile.rect)
                 context.stroke(tile.rect)
@@ -90,10 +90,10 @@ class GameView: UIView {
             last = touch.location(in: self)
             
             if currentlyDragging != nil {
+                touchListener(first, last, currentlyDragging!.kind)
                 bankTiles[draggedTileIndex].dragging = false
                 currentlyDragging = nil
                 draggedTileIndex = nil
-                touchListener(first, last)
                 setNeedsDisplay()
             }
         }

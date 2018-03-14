@@ -28,7 +28,7 @@ class GameViewController: UIViewController, Observer {
         animator.completionListener = self.finishedAnimatingTurn
         
         setBankTiles()
-        gameView.touchListener = self.handleTouch(start:end:)
+        gameView.touchListener = self.handleTouch(start:end:tileKind:)
         gameView.display = animator.drawBoard(from: game.gameBoard)
         gameView.setNeedsDisplay()
     }
@@ -42,14 +42,13 @@ class GameViewController: UIViewController, Observer {
     // where the gameView.bounds.size would change after the initial layout.
     override func viewDidLayoutSubviews() {
         animator.viewSizeDidChange(to: gameView.bounds.size)
+        setBankTiles()
         displayCurrentGameState()
     }
     
     func setBankTiles() {
         let tiles = animator.getBankTiles()
-        for rect in tiles {
-            gameView.bankTiles.append(rect)
-        }
+        gameView.bankTiles = tiles
     }
     
     // Displays the game board according to the most up to date game state
@@ -84,7 +83,7 @@ class GameViewController: UIViewController, Observer {
     
     // This method is registered as the touchListener in gameView
     // It converts the touch input into a coordinate on the grid
-    func handleTouch(start: CGPoint, end: CGPoint) {
+    func handleTouch(start: CGPoint, end: CGPoint, tileKind: TileKind) {
         let gridTop = animator.gridOffset
         let gridBottom = (animator.gridOffset + gameView.bounds.size.width)
         if end.y > gridTop && end.y < gridBottom {
@@ -94,7 +93,7 @@ class GameViewController: UIViewController, Observer {
             let y = Int((yOffsetIntoGrid / tileSize).rounded(.towardZero))
             let x = Int((xOffsetIntoGrid / tileSize).rounded(.towardZero))
             
-            let kind: TileKind = start.y < end.y ? .Color_A : .Color_B //Temporary to drop pink from above, purple from bottom
+            let kind = tileKind
             let accepted = game.acceptTile(kind: kind, at: Coordinate(x, y))
             if accepted {
                 print("Tile accepted at \(x), \(y)")
