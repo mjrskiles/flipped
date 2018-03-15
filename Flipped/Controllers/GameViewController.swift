@@ -97,7 +97,6 @@ class GameViewController: UIViewController, Observer {
     
     // This method is registered as a callback in the animator
     func finishedAnimatingTurn() {
-        print("current viewsize: \(gameView.bounds.size)")
         update()
         if !alreadyWon && game.won {
             alreadyWon = true
