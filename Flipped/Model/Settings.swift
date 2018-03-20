@@ -12,8 +12,16 @@ import Foundation
 class Settings {
     static let theInstance = Settings()
     
-    var infiniteTiles: Bool
-    private var colorBlindMode: Bool
+    var infiniteTiles: Bool {
+        didSet {
+            Settings.saveSettings()
+        }
+    }
+    private var colorBlindMode: Bool {
+        didSet {
+            Settings.saveSettings()
+        }
+    }
     var colorScheme: ColorScheme
     
     private init() {
@@ -37,6 +45,18 @@ class Settings {
         let data = try! Data(contentsOf: url)
         let decoder = PropertyListDecoder()
         return try! decoder.decode(AppConfiguration.self, from: data)
+    }
+    
+    static func saveSettings() {
+        let appSettings = AppConfiguration(infiniteTileMode: theInstance.infiniteTiles, colorBlindMode: theInstance.colorBlindMode )
+        let encoder = PropertyListEncoder()
+        guard let data = try? encoder.encode(appSettings) else {
+            print("Settings data could not be encoded!")
+            return
+        }
+        
+        let url = Bundle.main.url(forResource: "settings", withExtension: "plist")!
+        try! data.write(to: url)
     }
     
     struct AppConfiguration : Codable {
