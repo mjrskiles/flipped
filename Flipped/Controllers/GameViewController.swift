@@ -138,8 +138,7 @@ class GameViewController: UIViewController, Observer {
         }
     }
     
-    // Displays an action sheet prompting the user to force an invalid action.
-    // If the user confirms, the action is forced.
+    // Displays an action sheet prompting the user to move on to the next level
     func promptLevelComplete() {
         let title = "Level \(world)-\(level)"
         let message = "Level Complete!!"
@@ -154,7 +153,7 @@ class GameViewController: UIViewController, Observer {
             
             //Build the alert confirmation
             if !success {
-                let okayController = UIAlertController(title: "Wait a second!", message: "There is no next level!\nCongrats?", preferredStyle: .alert)
+                let okayController = UIAlertController(title: "Wait a second!", message: "There is no next level!\nCongrats??", preferredStyle: .alert)
                 let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 okayController.addAction(okayAction)
                 self.present(okayController, animated: true, completion: nil)

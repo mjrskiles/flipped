@@ -123,7 +123,6 @@ class Animator : AnimationDispatcher {
         if index < turn.states.count {
             let delay = (index == 0) ? 0.0 : animationDelay
             DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delay) {
-                let colorScheme = Settings.theInstance.colorScheme
                 var intermediate = self.drawBoard(from: turn.boardSnapshot)
                 //Draw the new tiles on top of the old board
                 for i in 0...index {
@@ -133,7 +132,7 @@ class Animator : AnimationDispatcher {
                         let x = transition.location.x
                         let y = transition.location.y
                         
-                        let item = self.describeTile(tile, x, y, on: turn.boardSnapshot, with: colorScheme)
+                        let item = self.describeTile(tile, x, y, on: turn.boardSnapshot)
                         intermediate.append(item)
                     }
                 }
@@ -151,7 +150,8 @@ class Animator : AnimationDispatcher {
         }
     }
     
-    func describeTile(_ tile: Tile, _ x: Int, _ y: Int, on board: GameBoard, with colorScheme: ColorScheme) -> Drawable {
+    func describeTile(_ tile: Tile, _ x: Int, _ y: Int, on board: GameBoard) -> Drawable {
+        let colorScheme = Settings.theInstance.colorScheme
         let isEndPoint = self.gameBoard.isEndPoint(Coordinate(x,y))
         let strokeColor = isEndPoint ? colorScheme.highlightColor.cgColor : UIColor.lightGray.cgColor
         let fillColor = colorScheme.tileColors[tile.kind]?.cgColor
@@ -191,6 +191,8 @@ class Animator : AnimationDispatcher {
         return grid
     }
     
+    
+    //This function returns a Drawable that draws the dashed outline of the tile bank
     func describeTileBank() -> Drawable {
         let bank: Drawable = Drawable() { context in
             if let context = UIGraphicsGetCurrentContext() {
