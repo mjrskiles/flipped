@@ -17,11 +17,13 @@ class Settings {
             Settings.saveSettings()
         }
     }
+    
     private var colorBlindMode: Bool {
         didSet {
             Settings.saveSettings()
         }
     }
+    
     var colorScheme: ColorScheme
     
     private init() {
@@ -56,7 +58,11 @@ class Settings {
         }
         
         let url = Bundle.main.url(forResource: "settings", withExtension: "plist")!
-        try! data.write(to: url)
+        do {
+            try data.write(to: url)
+        } catch {
+            print("There was an error writing the settings. D'oh!")
+        }
     }
     
     struct AppConfiguration : Codable {
